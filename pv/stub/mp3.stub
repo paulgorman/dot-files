@@ -1,0 +1,7 @@
+/* mp3 player */
+alias mp3 ${[$0]?{
+	^local fname $*
+        ${fexist($leftw(1 $glob($fname)))!=-1?[]:[xecho -b $(h2)$fname $(c2)may not exist$(hblk)...$(cl)]}
+        ^exec -9 %mpeg;wait;^exec -name mpeg mpg123 $fname > /dev/null
+	restub mp3
+}:{xecho -b $(c2)stopping any mp3s$(hblk)...$(cl);^exec -9 %mpeg;restub mp3}}

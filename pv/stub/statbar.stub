@@ -1,0 +1,15 @@
+alias statbar ${[$0]?{
+	^local t.sbar $0
+	${t.sbar<1||t.sbar>smax?[do {xecho -b Invalid choice.;statbar}]:{
+	@statbar=t.sbar
+	^init.status
+	^init.status
+	xecho -b Status bar now$(hblk)\:$(hwht) $statbar$(cl)
+
+}}
+restub statbar
+}:{
+xecho -b Current statusbar$(hblk)\: $(hwht)$statbar$(cl)
+xecho -b syntax$(hblk)\:$(cl) /statbar <1-$(smax)> to change status bars.
+restub statbar
+}}

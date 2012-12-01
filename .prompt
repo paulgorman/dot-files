@@ -1,0 +1,12 @@
+# Universal location for ANSI color escape codes.  Used
+#  in like prompts and shit.
+
+RED="\[\033[31m\]"
+GRN="\[\033[32m\]"
+YEL="\[\033[33m\]"
+BLUE="\[\033[34m\]"
+PURP="\[\033[35m\]"
+CYAN="\[\033[36m\]"
+N="\[\033[0m\]"
+B="\[\033[1m\]"
+

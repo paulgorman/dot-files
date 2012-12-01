@@ -1,0 +1,26 @@
+/* the idea for omsg came from SellFone, thanks for the idea :) */
+alias omsg {opers msg ${[$0]=~[*.*]?[$*]:[$S $*]}}
+alias opers {
+	@cmd=[$0]
+	@ss=[$1]
+	@text=[$2-]
+	^on ^raw_irc "% 204 % OPER *" {@push(nicks $strip(: $before([ $5)))}
+	^trace -o $ss
+	^on ^raw_irc "% 262 *" {
+		^on ^raw_irc -"% 204 % OPER *"
+	        xecho -b there are $(hwht)$#nicks$(cl) opers currently on $(cyn)$ss$(cl)
+		${cmd==[idle]?{
+		        ^on ^raw_irc "% 31*" {#}
+			^on ^raw_irc "% 301*" {#}
+		        ^on ^raw_irc "% 317*" {xecho -b $(hblk)[$(hwht)$[9]3$(hblk)]$(cl) has been idle $tdiff2($4)}
+                        fe ($nicks) nn {wii $nn}
+        		^on ^raw_irc "% 318 % $rightw(1 $nicks)*" {^on ^raw_irc -"% 31*";^on ^raw_irc -"% 317*";^on ^raw_irc -"% 301*";^on ^raw_irc -"% 318 % $3*"}
+	        }:cmd==[msg]?{fe ($nicks) nn {^msg $nn $text};echo $fparse(format_msg 0 Opers $ss $text)}:[]}
+		^assign -cmd
+		^assign -ss
+		^assign -text
+		^assign -nicks
+		^on ^raw_irc -"% 262 *"
+		restub omsg opers
+	}
+}

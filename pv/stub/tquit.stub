@@ -1,0 +1,21 @@
+alias tquit ${[$0]?{
+	${[$[1]0]==[-]?{
+	^local _tt $strip(- $0)
+	@delitem(quit $_tt)
+	xecho -b Removed quit reason $(hwht)$_tt$(cl).
+	}:{
+	@setitem(quit $numitems(quit) $*)
+	xecho -b Added quit reason to list. Total\: $(hwht)${numitems(quit)-1}$(cl)
+}}
+restub tquit
+}:{
+	${numitems(quit)==1?{xecho -b You have no quit reasons stored.}:{
+	xecho -b Quit reasons$(hblk)\:
+	^local xz
+	for (@xz=1,xz<numitems(quit),@xz++) {
+	xecho -b $(hblk)!$(hwht)$xz$(hblk)!$(cl) $getitem(quit $xz)
+	}
+	xecho -b syntax$(hblk)\:$(cl) /tquit [-#] [reason]
+}}
+restub tquit
+}}

@@ -1,0 +1,11 @@
+alias winhelp {
+@get.head()
+echo $get.mid() $(hwht)^w-c$(cl) or $(hwht)/wc $(hblk):$(cl) create window        $(hwht)^w-k$(cl) or $(hwht)/wk $(hblk):$(cl) kill window        $get.mid()
+echo $get.mid() $(hwht)^w-s$(cl) or $(hwht)/ws $(hblk):$(cl) list windows         $(hwht)^w-l$(cl) or $(hwht)/wl $(hblk):$(cl) reset window       $get.mid()
+echo $get.mid() $(hwht)^w-n$(cl) or $(hwht)/wn $(hblk):$(cl) next window          $(hwht)^w-p$(cl) or $(hwht)/wp $(hblk):$(cl) window previous    $get.mid()
+echo $get.mid() $(hwht)^w-#$(cl) or $(hwht)/#$(cl) or $(hwht)alt-# $(hblk):$(cl) swap 1-9     $(hwht)/wns$(hblk):$(cl) window new server          $get.mid()
+echo $get.mid() $(hwht)/wj$(hblk):$(cl) creates window/joins chan $(hwht)    /wlk$(hblk):$(cl)kill window/part channel    $get.mid()
+echo $get.mid() $(hwht)/wq$(hblk):$(cl) creates window/queries nick                                    $get.mid()
+@get.foot()
+restub winhelp
+}

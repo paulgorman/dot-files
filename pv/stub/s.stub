@@ -1,0 +1,7 @@
+alias s ${[$0]?{
+	^stack push set flood_protection
+	^set flood_protection off
+	ctcp $0 cdcc ${[$1]?[send #$1-]:[list]}
+	^timer ${[$[1]0]==[\#]?[45]:[15]} ^stack pop set flood_protection
+	restub s
+}:{phelp s;restub s}}

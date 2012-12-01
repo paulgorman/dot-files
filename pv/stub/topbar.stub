@@ -1,0 +1,12 @@
+alias topbar ${[$0]?{
+	^local t.tbar $0
+	${t.tbar<1||t.tbar>tmax?[do {xecho -b Invalid choice.;topbar}]:{
+	@topbar=t.tbar;@tbar=[1];^window split on;^init.status
+	xecho -b Topic bar now$(hblk)\:$(hwht) $topbar$(cl)
+}}
+restub topbar
+}:{
+xecho -b Current topicbar$(hblk)\: $(hwht)$topbar$(cl)
+xecho -b syntax$(hblk)\:$(cl) /topbar <1-$(tmax)> to change topic bar.
+restub topbar
+}}

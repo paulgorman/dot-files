@@ -1,0 +1,16 @@
+alias ls {
+        ^local pat
+	@hh=0
+	${[$[1]0]==[-]?[@pat=[$1-]]:[@pat=[$*]]}
+	//exec -name bxls ls -laF --color $pat
+	^on ^exec "bxls *" {
+	@hh++
+	${[$9]==[./]||[$9]==[../]?[]:{echo $(c2)$[-9]5$(hblk)!$(cl)$([${50+strlen($9)-absstrlen($9)}]9) $(hblk)\($c3($[3]6 $[-2]7 $[5]8)$(hblk)\)$(cl)}}
+	}
+	^on ^exec_exit "bxls" {
+	^on ^exec -"bxls"
+	^on ^exec_exit -"bxls"
+	xecho -b total files listed$(hblk): $h1($hh)
+	restub ls
+	}
+}

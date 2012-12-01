@@ -1,0 +1,178 @@
+# bxlog.bx v. 2.1c  by dARTh
+# email: <darth@beers.net>
+# UIN: 143542
+##############################
+# more flexible configuration
+# Supports both BitchX-7X and BitchX-1.0cX
+#
+# The only command you'll need is /LOG - type it! :-)
+############## CONFIGURATION ###############
+# Set this to the directory, you wish your log files to be written
+# E.G: ~/logs
+    @ logdir = [~/logs]
+# Set the color scheme (R for red, G for green, W for white, etc..)
+# Valid choises are W,R,Y,G,C,B,P,K and X for random.
+    @ col = [C]
+# Display the time on startup (Y/N):
+    @ sht = [Y]
+# Log date and time in log files (Y/N):
+    @ wrt = [Y]
+# date format in logs (see strftime(3) man for more details):
+    @ dfmt = [%m/%d %T]
+# Log public (Y/N):
+    @ publog = [Y]
+# Log private (msgs, dcc, notices, ctcps) (Y/N):
+    @ pvtlog = [Y]
+# Do not change anything below, unless you know what you're doing
+############################################
+@ col = [$tolower($col)]
+@ colup = [$toupper($col)]
+@ logger = [BXLog]
+@ logver = [2.2]
+@ auth = [$decode(GEEBFCFEGI)]
+if ([$col]!=[W]&&[$col]!=[R]&&[$col]!=[Y]&&[$col]!=[G]&&[$col]!=[C]&&[$col]!=[B]&&[$col]!=[P]&&[$col]!=[K]||[$col]==[X]) { 
+    @col.0=[w];@col.1=[r];@col.2=[y];@col.3=[g];@col.4=[c];@col.5=[b];@col.6=[p]
+    @ randcol = [$col[$rand(7)]]
+    @ col = [$tolower($randcol)]
+    @ colup = [$toupper($randcol)]
+}
+alias logecho echo $G $cparse("%$col$0-")
+eval logecho %$col\Starting %$colup\BX%$col\Log [%$colup$logver%$col\] by %$colup$tolower($left(1 $auth))%$col$toupper($mid(1 3 $auth))%$colup$tolower($right(1 $auth))%$col\...
+if ([$col] == [K]) eval logecho %w It is not advisable to use %KTHIS%w color scheme :)
+if ([$wrt]!=[Y]&&[$wrt]!=[N]) { 
+    eval logecho @ wrt = %$col\[%$colup$wrt%$col\]%$colup\ --%$col\ not set properly%$colup\!
+    @ wrt = [Y] 
+}
+if ([$fexist($logdir)]!=[1]) {
+    logecho %RThe log directory does not exist%W - %Gcreating it%g...
+    if ([$mkdir($logdir)]!=[0]) {
+	eval logecho Unable to %Wmkdir%$colup\ -- check your %Rpermissions%R%W!!!
+	quit 
+    }
+    if ([$chmod($logdir 700)]!=[0]) {
+	eval logecho Unable to %Wchmod 700%$colup\ -- check your %Rpermissions%R%W!!!
+	quit 
+    }
+}
+
+if ([$[1]after(- $J)]!=[7]) {
+    fset version $version + \$logger [\$logver] by \$tolower($left(1 $auth))\$toupper($mid(1 3 $auth))\$tolower($right(1 $auth))
+    @ out=[$numwords($version)]-1
+    if ([$strip(BXL $logger)]!=[og]||[$strip(. $logver)]!=[22]||[$strip(RBMhZduk $auth)]!=[at]||[$mid(1 3 $word($out $version))]!=[aut]) {
+	logecho %rIt %RIS L%RAME%r to to%ruch som%reth%ring, you %RDO%RN'T%r unde%rrst%rand%R!!!
+	bye
+    }
+}{
+    fset format_version $format_version + \$logger [\$logver] by \$tolower($left(1 $auth))\$toupper($mid(1 3 $auth))\$tolower($right(1 $auth))
+    @ out=[$numwords($format_version)]-1
+    if ([$strip(BXL $logger)]!=[og]||[$strip(. $logver)]!=[22]||[$strip(RBMhZduk $auth)]!=[at]||[$mid(1 3 $word($out $format_version))]!=[aut]) {
+	logecho %rIt %RIS L%RAME%r to to%ruch som%reth%ring, you %RDO%RN'T%r unde%rrst%rand%R!!!
+	bye
+    }
+}
+
+alias bxlog {
+    if (([$[1]0]==[#]&&[$publog]==[Y])||([$[1]0]!=[#] && [$pvtlog]==[Y])) {
+	@ bxl = open($logdir/$tolower($0) W)
+    	if ([$wrt]==[Y]) {
+	    @ write($bxl [$strftime($dfmt)] $stripc($stripansicodes($strip( $1-)))) 
+	}{
+	    @ write($bxl $stripc($stripansicodes($strip( $1-)))) 
+	}
+	@ close($bxl) 
+    }
+}
+alias log {
+    @log = [$tolower($0)]
+    if ([$1]!=[on]&&[$1]!=[off]&&[$1]!=[view]&&[$1]!=[del]) {
+	eval logecho %$colup\Usage%$col\:%$colup\ /%$col\LOG %Y<%Cnick%W|%Bchannel%Y%W|%Y<%Cnick%Y>%W.dcc|%Rctcp%Y> %Y<%Gon%W|%Roff%W|%Cview%W|%Bdel%Y> 
+    }{
+	if ([$1]==[on]) {
+	    if ([$fexist($logdir/$log\.log)]!=[1]) {
+		eval logecho A log for %W$log%$colup\ does %Rnot%$colup\ exist%W!! 
+	    }{
+	      @ chmod($logdir/$log\.log 644)
+		bxlog $log\.log >> Logging On <<
+		eval logecho Toggled logging for %W$log %$col\[%GOn%$col\] 
+	    }
+	}
+	if ([$1]==[off]) {
+	    bxlog $log\.log >> Logging Off <<
+	  @ chmod($logdir/$log\.log 444)
+	    eval logecho Toggled logging for %W$log%W %$col\[%ROff%$col\] 
+	}
+	if ([$1]==[del]) {
+	    if ([$fexist($logdir/$log\.log)]!=[1]) {
+		eval logecho A log for %W$log%$colup\ does %Rnot%$colup\ exist%W!! 
+	    }{
+		eval logecho The log file for %W$log%$colup\ - %Rremoved%W!!
+		exec rm -f $logdir/"$log".log 
+	    }
+	}
+	if ([$1]==[view]) {
+	    if ([$fexist($logdir/$log\.log)]!=[1]) {
+		eval logecho A log for %W$log%$colup\ does %Rnot%$colup\ exist%W!! 
+	    }{
+		eval logecho Displaying the log of %W$log%$colup\:
+		exec cat $logdir/"$log".log 
+	    }
+	}
+    }
+}
+
+on #-msg 1003 * bxlog $0.log <$0> $1-
+on #-send_msg 1003 * bxlog $0.log \($N\) $1-
+on #-notice 1003 * bxlog $0.log -$0\- $1-
+on #-send_notice 1003 * bxlog $0.log =$N= $1-
+on #-dcc_chat 1003 * bxlog $0.dcc.log <$0> $1-
+on #-send_dcc_chat 1003 * bxlog $0.dcc.log \($N\) $1-
+on #-public 1003 * bxlog $1.log <$0> $2-
+on #-public_ar 1003 * bxlog $1.log [$0> $2-
+on #-send_public 1003 * bxlog $0.log \($N\) $1-
+on #-public_notice 1003 * bxlog $1.log -$0\- $2-
+on #-send_action 1003 * {
+    if ([$[1]0]==[=]) {
+	bxlog $strip(= $0).dcc.log + $N $1- 
+    }{
+  	bxlog $0.log + $N $1- 
+    }
+}
+on #-action 1003 * {
+    if ([$[1]1]==[#]) {
+    	bxlog $1.log * $0 $2- 
+    }{
+	if ([$[1]0] == [=]) {
+	    bxlog $strip(= $0).dcc.log * $strip(= $0) $2- 
+	}{
+	    bxlog $0.log * $0 $2- 
+	}
+    }
+}
+on #-leave 1003 * bxlog $1.log < $0!$2 has left $1 \($3-\)
+on #-join 1003 * bxlog $1.log > $0!$2 has joined $1
+on #-kick 1003 * bxlog $2.log < $0!$userhost($0) was kicked off $2 by $1!$userhost($1) \($3-\)
+on #-topic 1003 * bxlog $1.log @ Topic by $0: $2-
+on #-channel_nick 1003 * bxlog $0.log ! $1 is known as $2
+on #-channel_signoff 1003 * bxlog $0.log < SignOff: $1!$userhost($1) \($2-\)
+on #-mode 1003 * {
+    if ([$userhost($0)]==[<UNKNOWN>@<UNKNOWN>]) {
+	bxlog $1.log @ mode $1 [$2-] by $0 
+    }{
+	bxlog $1.log @ mode $1 [$2-] by $0!$userhost($0) 
+    }
+}
+on #-ctcp 1003 * {
+    if ([$userhost($0)]==[<UNKNOWN>@<UNKNOWN>]) {
+	bxlog ctcp.log CTCP from $0: $2- 
+    }{
+	bxlog ctcp.log CTCP form $0!$userhost($0): $2- 
+    }
+}
+on #-ctcp_reply 1003 * bxlog ctcp.log CTCP $1 reply from $0: $2-
+if ([$sht]==[Y]) {
+    eval logecho %$col\Started on%$colup\: $strftime(%m/%d/%Y %T) 
+}{
+    if ([$sht]!=[N]) {
+	eval logecho @ sht = %$col\[%$colup$sht%$col\]%$colup\ --%$col\ not set properly%$colup\! 
+    }
+}

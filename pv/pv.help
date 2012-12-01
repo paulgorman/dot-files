@@ -1,0 +1,297 @@
+@index
+/phelp [topic]
+- ÿabout    ansi    away    back    color   config   conv     encode
+- ÿechochar friend  key     ls      mass    memo     nickcomp play
+- ÿrainbow  rcolor  rk      psave   statbar taway    topbar   tkick
+- ÿtquit    url     winhelp mp3     tnick   msgwin   dict     oidle
+- ÿomsg     winsave winload
+@ansi
+/ansi [name]
+- loadable ansi bits. this replaces most headers and footers with 
+- ansi's found in the ~/pv/ansi/ dir.  example format of these files
+- as followed:
+-
+- file: title.pv
+-   # author description
+-
+- file: evil.h
+-   the header ansi
+-
+- file: evil.m
+-   the border ansi - this needs to be no more than 3 characters for
+-   it will be used to fit on either side of the info in the center.
+-
+- file: evil.f
+-   the footer ansi
+-
+- if you want to make an ansi theme, simply experiment and see how
+- the others are done. it takes a few times to get the alignment
+- right. let me know if you want yours included in the pv pack.
+- aliases: theme module
+@psave
+/psave
+- saves all prevail settings. type /save to save BitchX settings.
+@color
+/color <#> <#> <#>
+- color definition. you must specify three colors.
+- aliases: colour
+@rcolor
+/rcolor
+- randomly selects three colors.
+@echochar
+/echochar [#]
+- echo prompt selection. choose from one of several echo character
+- strings.
+- aliases: etheme
+@nickcomp
+/nickcomp [#]
+- nick completion selection. choose from one of several completion
+- strings.
+- aliases: ntheme
+@statbar
+/statbar [#]
+- status bar selection. hmm. i hate doing these help files.
+- aliases: sbar stheme status
+@topbar
+/topbar [#]
+- topic bar selection. use control-y to toggle topic bar on/off.
+- aliases: tbar btheme
+@rainbow
+/rainbow
+- toggles the "rainbow of lag" on/off.
+- aliases: crazy
+@rk
+/rk
+- kicks a randomly chosen non-op from your current channel.
+@config
+/config <#> [n]
+- you can configure everything but colors with config. for toggles,
+- just type /config <#> to toggle on/off.
+- ie: /config f3 who - this binds your f3 key to who.
+- aliases: cfg setup
+@away
+/away [reason]
+- sets you away with [reason] and may or may not log messages while
+- you are gone, depending on your settings in /config. if no reason
+- is supplied, a random reason from your /taway array will be used.
+- aliases: gone
+@back
+/back [reason]
+- sets you back after being set away with optional reason.
+@remlog
+/remlog
+- deletes your away messages.
+- aliases: dellog
+@play
+/play
+- read any away messages that you may have.
+- aliases: readlog
+@memo
+/memo [text]
+- writes a memo to the memo file. if no text is given, the memo file
+- will be displayed to screen.
+@url
+/url
+- reads the file of urls grabbed by BitchX's http grabber.
+- /SET HTTP_GRAB and FTP_GRAB ON to enable this.
+@conv
+/conv <address/ip>
+- attempts to convert an address to numerical ip, and vice versa.
+@s
+/s <nick> [#]
+- shortcut for /ctcp <nick> cdcc list or /ctcp <nick> cdcc send #n
+- eg: /s <nick> will request a list of all packs offered.
+-     /s <nick> 3 will request <nick> to cdcc send pack #3.
+@x
+/x <nick> [#]
+- shortcut for /msg <nick> xdcc list or /msg <nick> xdcc send #n
+- eg: /x <nick> will request a list of all packs offered.
+-     /x <nick> 3 will request <nick> to xdcc send pack #3.
+@page
+/page <nick> [reason]
+- shortcut for /ctcp <nick> page - pages <nick> with optional reason.
+@bword
+/bword [-l] <[-]word>
+- shortcut for banwords where you can add, remove/list banned words.
+- eg: /bword -l will list all banned words.
+-     /bword fuck will add fuck to the banned word list.
+-     /bword -fuck will remove fuck from the banned word list.
+@encode
+/encode [-m nick] <text>
+- encodes <text> and sends to the channel, or msgs nick if [-m nick]
+- parameter is given.
+@cig
+/cig
+- ignores all PUBLIC from current channel. /tig to remove ignore.
+@tquit
+/tquit [-#] [reason]
+- stores your quit reasons and randomly selects from this list when 
+- needed. use the -# parameter to remove a specific reason.
+@taway
+/taway [-#] [reason]
+- stores your away reasons and randomly selects from this list when
+- needed. use the -# parameter to remove a specific reason.
+@tkick
+/tkick [-#] [reason]
+- stores your kick reasons and randomly selects from this list when
+- needed. use the -# parameter to remove a specific reason.
+@tnick
+/tnick [-#] [nick]
+- stores your nick list and randomly selects from this list when your
+- nick is taken. use the -# parameter to remove a specific nick.
+@ls
+/ls [*pattern*]
+- executes ls -la in your current dir and returns a color formatted 
+- listing.
+@friend
+/friend <nick>
+- performs a simple shortcut for /adduser master. master levels are:
+- VOICE, OPS, BAN, UNBAN, INVITE, DCC, FLOOD
+@mass
+/mass <n> [reason]
+- performs a mass function to entire channel. parameters as follows:
+- [ o] mass-op
+- [ r] mass-reop
+- [ d] mass-deop
+- [ v] mass-voice
+- [ q] mass-quiet (devoice)
+- [ b] mass-ban
+- [bk] mass-bankick
+- [lk] kick non-ops
+- [ k] mass-kick all
+@winhelp
+/winhelp
+- shows submenu for windowing help.
+- aliases: binds wh
+@key
+/key [key]
+- show channel key, or change it if specified. use /unkey to remove.
+@mp3
+/mp3 [filename(s)]
+- this will play the specified mp3s if you have mpg123. to stop all
+- playing mp3s, just type /mp3 without any parameters.
+- mpg123 can be found at http://mpg.123.org/
+@msgwin
+/msgwin
+- this will create a new hidden window where all incoming messages
+- and notices will go.
+@dict
+/dict [-o|-<database>|-*|-o<database>|-l] <word>
+- queries a dictionary database for <word>'s definition.
+- [-o] output results to current channel
+- [-<database>] refers to specified database
+- [-*] queries all databases for definition
+- [-o<database>] queries all databases and outputs to channel
+- [-l] list all dictionary databases
+@dserv
+/dserv [database]
+- toggles between the two default dictionary databases to be used
+- in conjuction with /dict. if a parameter is passed, it will be
+- the new default database.
+@oidle
+/oidle [server]
+- this will find the idle time of all the ircops on a server, if
+- no server is passed it will use the current server.
+@omsg
+/omsg [server] <message>
+- this will send a message to all the ircops on a server, if no
+- server is passed it will use the current server.
+@winsave
+/winsave
+- this will save your current window configuration. it will save
+- channels, queries, and window levels. to restore your saved
+- settings use the /winload command.
+@winload
+/winload
+- this will load your saved window settings made by the /winsave
+- command. type /phelp winsave to find out more.
+@about
+- - 08/16
+- fixed repeat/mirccolor kicker, added mass-reop, added middle (*.m)
+- files. topic bar is now saveable. added a toggle for kick reason
+- logos. added /mass interface
+- - 08/19
+- changed /config a bit. added /rainbow for the hell of it, added
+- /topbar, made the different /statbar's prettier as well as the
+- plist.
+- - 08/24
+- fixed /ansi loader for 72p2-2, added /winhelp (/binds), added
+- statbar 5 and 6.
+- - 08/27
+- first public release. yay!
+- - 08/30
+- fixed all status bars to include dcc status. fixed /save so it
+- only saves prevail settings. psykotyk rewrote do.crypt alias.
+- fixed bug in channel_sync when joining multiple chans at once.
+- maybe fixed the /ansi bug where it returns blanks if done too much
+- started using ^wset which means this now requires 73a1+.
+- - 09/05
+- reversed cdcc/dcc status since pana did too. changed send_ctcp's
+- so it shows all. hmm. not very much else. this looks like a
+- near-final. again, if you make an ansi theme for prevail send it
+- to me or fudd@efnet please. this project is running down..
+- - 09/10
+- added fset support for BitchX-73, fixed a few things here and there.
+- all bugs found were strictly by fudd and the occational anonymous
+- email. thanks.
+- - 09/18!74
+- changed a few format set's to allow for BitchX-74 compatibility.
+- - 09/18!74a5
+- bugfix release by fudd. fixed the bug where it would get stuck at 
+- 35% on load.
+- - 09/26
+- fixed window stuff (/wns, /wc, and /wj) to show the double statbar.
+- changed userlist to match bx's new userlist. added lots of new 
+- ansis.
+- - 09/30
+- fixed /ansi and in other places where close() wasnt being called
+- right. thanks RoboHak and panasync for the find. alot of this
+- release needs to be given to fudd. thanks alot man.
+- - 11/20
+- /psave wasnt saving fkey 3. made /ls not show . and ..
+- added /msgwin to create a window for msgs and notices.
+- the following changes courtesy of RoboHak: fixed all the bugs
+- with notify. made /whois able to show ansi in ircnames. also 
+- fixed line wrap in /whois.
+-
+- - 01/05
+- prevail for BitchX is now maintained by RoboHak and fudd.
+- This version uses code that will only work in BitchX-74p2 and up.
+- Most of the code has been redone by RoboHak. since so much has
+- been changed some bugs might appear. Please report any bugs to
+- Robohak@cris.com, or RoboHak and fudd in #bitchx on EFnet.
+- aliases that are not used often will now load when you use them
+- and unload when they are done, using stub files. local vars were
+- used when possible. /msgwin was really added this time.
+- new /dict command. new /oidle and /omsg commands will find the
+- idle time of all ircops on a server or msg all ircops on a server.
+- (/omsg was SellFone's idea) new /tnick command will store nicks to
+- use when your nick is taken, it works like /tquit etc. new /wq
+- command to create a window with a query for the nick specified.
+- new statusbar 7 and top bar 4 similar to statusbar 1 in crackrock.
+- 5 new ansis were added. blockhouse, pheer, phacet, pimpology, and
+- wired.
+-
+- - 01/23
+- this is mostly a bug fix release. the /encode bug has been fixed.
+- the problem where the input prompt did not update when switching
+- channels with ^X has been fixed. the problem where the scan when
+- you join a channel would go to the current window instead of the
+- window for that channel has been fixed. /winsave and /winload
+- were added, to save and load your default window settings.
+- default channel modes were also added, and can be set in /config
+- /dserv was removed, now the dictionary server is set in /config
+- there is a new option for random quit reasons, if it's off it will
+- use the prevail logo. if it's on it will try to use any /tquit
+- entries you have, if you don't have any it tries to use BitchX.quit
+- and if that doesn't exist it uses the prevail logo.
+-
+- new url, ftp or browse to: prevail.sync.org
+- [thanks to sync for use of his neato domain] 
+-
+- - 03/02/2002
+- Fixed stub problem that caused most commands not to work with
+- BitchX 1.0* and updated the version (0123a) to reflect this.
+- Since prevail.sync.org seems to no longer be in operation I will
+- be using my site (http://www.got.net/~brian/) as the official
+- distribution channel. -fudd

@@ -1,0 +1,5 @@
+alias dserv {
+        @dict.serv=[$0]?[$0]:dict.serv==[dict.org]?[www.miranda.org]:[dict.org]
+	ee Your dictionary server is now $(hwht)$dict.serv$(cl)
+	restub dserv
+}

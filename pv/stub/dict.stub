@@ -1,0 +1,39 @@
+/* dictionary */
+alias decho {
+	@delay++
+	${[$0]?[^timer $delay {^quote PRIVMSG $T \:$1-}]:[]}
+	xecho $dict.ec $1-
+}
+alias dsend {^dcc raw $dict.num $dict.serv $*}
+alias dict ${[$0]?{
+	@out=0
+	@list=0
+	@delay=0
+	switch ($0) {
+		(-o)  {@out=1;@db=[!];@word=[$1-]}
+		(-o*) {@out=1;^local tmp $strip(- $0);@db=right(${strlen($tmp)-1} $tmp);@word=[$1-]}
+		(-l)  {@list=1}
+		(-*)  {@db=strip(- $0);@word=[$1-]}
+		(*)   {@db=[!];@word=[$*]}
+	}
+        ^on ^dcc_connect "% raw *" {^on ^dcc_connect -"% raw *"}
+        ^@dict.num=connect($dict.serv $dict.port)
+        ${dict.num?{
+        	^on ^dcc_lost "$dict.num *" {^on ^dcc_lost -"$dict.num *";^on ^dcc_raw -"$dict.num $dict.serv d *";^assign -dict.num;^assign -word;^assign -db;restub dict decho dsend}
+        	^on ^dcc_raw "$dict.num $dict.serv d *" {
+        		switch ($3) {
+                	(220) {dsend ${list?[SHOW DB]:[DEFINE $db $word]}}
+			        (150) {${[$4]==1?{echo $dict.ec $(hwht)$4$(cl) definition $before(\: $6-\:)}:{echo $dict.ec $before(\: $4-\:)}}}
+			        (151) {decho $out definition of $tr(/\"//$4)\ from $before(\: $tr(/\"//$6-)\:)\}
+			        (.) {xecho $dict.ec}
+			        (221) {}
+			        (250) {dsend QUIT}
+			        (552) {xecho -b could not find any entries for $(hwht)$word$(cl);dsend QUIT}
+			        (501) {xecho -b Invalid parameters;dsend QUIT}
+			        (550) {xecho -b Invalid database;dsend QUIT}
+			        (110) {xecho -b the following $(hwht)$4$(cl) databases are valid\:}
+			        (*) {${[$3-]!=[]?{decho $out $strip( $3-)}:[]}}
+				}
+            }
+        }:[xecho -b could not connect to $(dict.serv)\ on port $(dict.port)\]}
+}:{xecho -b usage\: /dict word;restub dict decho dsend}}

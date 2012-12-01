@@ -1,0 +1,29 @@
+alias getwininfo {
+	^on ^window '% $G *' {#}
+	^on ^window '% $G *Current channel: *' {@win.chan=[$4];^on window -'% $G *Current channel: *'}
+	^on ^window '% $G *Query User: *' {@win.query=[$4];^on window -'% $G *Query User: *'}
+	^on ^window '% $G *Window level is *' {@setitem(win $numitems(win) $win.chan $win.query $5-);^on window -'% $G *Window level is *'}
+	wait for window $0 describe
+}
+alias winsave {
+	^local xx,float,tmp,cmd
+	^local windows $sort($winrefs())
+	xecho -b Saving current window configurations...
+	@delarray(win)
+	fe ($windows) aa {wait for getwininfo $aa;^on window -'% $G *'}
+	fe ($mychannels()) cc {${matchitem(win $cc *)<0?[push float $cc]:[]}}
+	${fexist(~/pv/pv.win)!=-1?[@unlink(~/pv/pv.win)]:[]}
+	^local winpv $open(~/pv/pv.win W T)
+	${float?[@write($winpv wait for window swap 1 double on channel $tr(/ /,/$float))]:[]}
+	for (@xx=0,xx<numitems(win),@xx++) {
+	    @cmd=[window ${xx?[new double on hide]:[double on]} swap ${xx+1}]
+		@tmp=getitem(win $xx)
+		${restw(2 $tmp)!=[NONE]?[push cmd level $tr(/ /,/$restw(2 $tmp))]:[]}
+		${word(0 $tmp)!=[<None>]?[push cmd channel $word(0 $tmp)]:[]}
+		${word(1 $tmp)!=[<None>]?[push cmd query $word(1 $tmp)]:[]}
+		@write($winpv $cmd)
+	}
+	@write($winpv window swap 1)
+	@close($winpv)
+	restub winsave getwininfo
+}

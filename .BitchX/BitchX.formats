@@ -1,0 +1,233 @@
+FSET ACTION $AA %W$1%n $fix.mirc($4-)
+FSET ACTION_AR $AA %W$1%n $fix.mirc($4-)
+FSET ACTION_CHANNEL %@%Kð %Y$1/$3 %n$4-
+FSET ACTION_OTHER $AA %n$tolower($3)%K!%W$1%n $fix.mirc($4-)
+FSET ACTION_OTHER_AR $AA %n$tolower($3)%K!%W$1%n $fix.mirc($4-)
+FSET ACTION_USER $AA %K(%W$1%K)%w $fix.mirc($4-)
+FSET ACTION_USER_AR $AA %n$3%K!%W$1%n $fix.mirc($4-)
+FSET ALIAS Alias $[20.]0 $1-
+FSET ASSIGN Assign $[20.]0 $1-
+FSET -AWAY
+FSET -BACK
+FSET BANS $get.mid() $(hwht)#$[2]0 $c3($[10]1) $h2($[9]3) $c2($[8]nospace($get.diff2($4))) $(hblk)($(hwht)$[31]2$(hblk)) $get.mid()
+FSET -BANS_FOOTER
+FSET BANS_HEADER $get.head()
+FSET BITCH %RBitch Mode Activated%n $1 $4 $5 on $3
+FSET BOT $get.mid() $c3($[-2]0 $[2]1) $h2($[11]2) $c2($[10]3) $h1($[38]4) $get.mid()
+FSET BOT_FOOTER $get.foot()
+FSET BOT_HEADER $get.head()
+FSET BWALL %K[$c3(wallop)%K!$h3($1)%K(%W$2%K)]%n $fix.mirc($4-)
+FSET CHANNEL_SIGNOFF $G %K[$c3(signoff)%K!$h3($3)%K] %W$1 %K(%n$fix.mirc($4-)%K)
+FSET COMPLETE %K[%n$[15]0%K] [%n$[15]1%K] [%n$[15]2%K] [%n$[15]3%K]
+FSET CONNECT $G Connecting to server $1/%c$2%n
+FSET CSET $c2($[-10]1) %n$[22ú]0 %W$[5]2-
+FSET CTCP $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_CLOAK $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_CLOAK_FUNC $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_CLOAK_FUNC_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_CLOAK_UNKNOWN $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_CLOAK_UNKNOWN_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_CLOAK_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_FUNC $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_FUNC_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_REPLY $G $fix.v5($tolower($3) $1 $fix.ping($4-))
+FSET CTCP_UNKNOWN $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_UNKNOWN_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET CTCP_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET DCC $fix.st.dcc($*)
+FSET DCC_CHAT %Kð$c3(dcc)%K!$h3($1)%Kð%n $fix.mirc($3-)
+FSET DCC_CONNECT $G %K[$c3(dcc connect)%K!$h3($tolower($1))%K]%n with $h2($2) %K($c2($4, port $5)%K)%n established.
+FSET DCC_ERROR $G %K[$c3(dcc $tolower($1))%K!$h3(lost)%K] "%W$2%K" %K($c2($3-)%K)%n
+FSET DCC_LOST $G %K[$c3(dcc $tolower($1))%K!$h3(complete)%K] "%W$2%K" %K($c2($3)%K)%n $4 $5 %K[$c2($6secs, $7 $8/s)%K]%n
+FSET DCC_REQUEST $G %K[$c3(dcc $tolower($1))%K!$h3(request)%K] "%W$2%K" %K($c2($8 $7)%K)%n from $h2($3) %K($c2($4)%K)%n
+FSET DESYNC $G $fix.v3(desync $1 $2)
+FSET DISCONNECT $G Use %W/server%n to connect to a server.
+FSET EBANS $[2]0 $[10]1 $[10]3 $[-5]numdiff($time() $4)  $2
+FSET -EBANS_FOOTER
+FSET EBANS_HEADER #  Channel    SetBy        Sec  ExemptBan
+FSET ENCRYPTED_NOTICE %K-%Y$1%K(%p$fix.d($2)%K)-%n $fix.mirc($3-)
+FSET ENCRYPTED_PRIVMSG %K[%Y$1%K(%p$2%K)]%n $fix.mirc($3-)
+FSET FLOOD %C$1%n flood detected from %W$2 %K(%n$3%K)%n on %K[%c$4%K]
+FSET FRIEND_JOIN $G $fix.v(joined $1 $2 $3)
+FSET HELP $*
+FSET HOOK $*
+FSET IGNORE_INVITE $G You have been invited to $1-
+FSET IGNORE_MSG %K[%P$1%P$2%K(%p$3%K)]%n $fix.mirc($4-)
+FSET IGNORE_MSG_AWAY %K[%P$1%P$2%K(%p$3%K)]%n $fix.mirc($4-)
+FSET IGNORE_NOTICE %K-%P$2%K(%p$fix.d($3)%K)-%n $fix.mirc($4-)
+FSET IGNORE_WALL %K%P$1%n $fix.mirc($2-)
+FSET INVITE $G $fix.v3(Invite $2 from $1)
+FSET INVITE_USER $G Inviting %W$1%n to %c$2-
+FSET JOIN $G $fix.v(joined $1 $2 $3)
+FSET KICK $G $fix.v1(was kicked $3 $2 $1 $fix.mirc($4-))
+FSET KICK_USER $G $fix.v1(were kicked You $2 $1 $fix.mirc($4-))
+FSET KILL $G %RYou have been killed by $1 for $fix.mirc($2-)
+FSET LASTLOG $strftime($0 %H:%M) $1-
+FSET LEAVE $G $fix.v(left $1 $2 $3)
+FSET LINKS %K³%n$[24]0%K³ ³%n$[24]1%K³ ³%n$[3]2%K³ ³%n$[13]3%K³
+FSET LIST $[12]1 $[-5]2   $[40]3-
+FSET MAIL $G You have new mail.
+FSET MODE $G %K[$c3(mode)%K!$h3($3)%K] %K"%W$4-%K"%n by $c2($1)
+FSET MODE_CHANNEL $G %K[$c3(mode)%K!$h3($3)%K] %K"%W$4-%K"%n by $c2($1)
+FSET MSG %K[$h3($1)%K!$c3($2)%K]%n $fix.mirc($3-)
+FSET MSGCOUNT [$*]
+FSET MSGLOG [$[8]0] [$1] - $2-
+FSET MSG_GROUP %K-%P$1%K!%p$2%K-%n $fix.mirc($3-)
+FSET NAMES $G %K[%nusers%K($1%K!$2%K)]%n $3
+FSET -NAMES_BANNER
+FSET NAMES_BOT $G %K[%nbots%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET NAMES_BOTCOLOR %K[%C$0%G$[10]1%K]
+FSET -NAMES_FOOTER
+FSET NAMES_FRIEND $G %K[%nfriends%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET NAMES_FRIENDCOLOR %K[%C$0%Y$[10]1%K]
+FSET NAMES_IRCOP $G %K[%nopers%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET NAMES_NICKCOLOR %K[%B $[10]1%K]
+FSET NAMES_NONOP $G %K[%nnon-ops%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET NAMES_OP $G %K[%nops%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET NAMES_OPCOLOR %K[%C$0%n%B$[10]1%K]
+FSET NAMES_SHIT $G %K[%nfuckers%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET NAMES_SHITCOLOR %K[%C$0%n%R$[10]1%K]
+FSET NAMES_VOICE $G %K[%nvoiced%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET NAMES_VOICECOLOR %K[%Mv%B$[10]1%K]
+FSET NETADD $G %nAdded: %W$1-2
+FSET NETJOIN $G %nNetjoined: %W$1-2
+FSET NETSPLIT $G %nNetSplit detected: %W$1%n split from %W$2 %K[%c$0%K]
+FSET -NETSPLIT_HEADER
+FSET NICKNAME $G $fix.v4($1 $3)
+FSET NICKNAME_OTHER $G $fix.v4($1 $4)
+FSET NICKNAME_USER $G $fix.v4($(hwht)you$(hblk)\($c2($1)$(hblk)\)$(cl) $3)
+FSET NICK_AUTO $do.ncomp($*)
+FSET NICK_COMP $do.ncomp($*)
+FSET NICK_MSG $*
+FSET NONICK $get.head()$get.mid() %W$[9]1%K:%n No such nick. $repeat(42  ) $get.mid()
+FSET NOTE ($0) ($1) ($2) ($3) ($4) ($5-)
+FSET NOTICE %KÄ$h1($1)%K!$c1($fix.d($2))%KÄ%n $fix.mirc($3-)
+FSET NOTIFY_OFF $[10]0 $[35]1 $[-6]2 $[10]3 $4
+FSET NOTIFY_ON $[10]0 $[35]1 $[-6]2 $[10]3 $4
+FSET NOTIFY_SIGNOFF $G %K[$c3(notify)%K!$h3(signoff)%K] $c2($1) $c1(@)$h1($0)
+FSET NOTIFY_SIGNON $G %K[$c3(notify)%K!$h3(signon)%K] $c2($1) $c1(@)$h1($0)
+FSET OPER %C$1 %K[%c$2%K]%n is now an irc operator
+FSET OV [41m%S %>[1;30m[[1;32mOper[1;37mView[1;30;41m] 
+FSET PASTE %K[%W$1%K]%n $2-
+FSET PUBLIC $fp(<)%n$1$fp(>)%n $fix.mirc($3-)
+FSET PUBLIC_AR $fp(<)$h2($1)$fp(>)%n $fix.mirc($3-)
+FSET PUBLIC_MSG $c3(\()%n$1%K!%n$3$c3(\))%n $fix.mirc($4-)
+FSET PUBLIC_MSG_AR $c3(\()$h2($1)%K!%n$3$c3(\))%n $fix.mirc($4-)
+FSET PUBLIC_NOTICE %KÄ%n$1%K!%n$3%KÄ%n $fix.mirc($4-)
+FSET PUBLIC_NOTICE_AR %KÄ$h2($1)%K!%n$3%KÄ%n $fix.mirc($4-)
+FSET PUBLIC_OTHER %K<%n$2%K!%n$1%K>%n $fix.mirc($3-)
+FSET PUBLIC_OTHER_AR %K<%n$2%K!$h2($1)%K>%n $fix.mirc($3-)
+FSET REL >[$1] $4-
+FSET RELM [$1!$2] $4-
+FSET RELN -$1!$fix.d($2)- $4-
+FSET RELS $1-
+FSET RELSM >[msg($1)] $2-
+FSET RELSN >-notice($1)- $2-
+FSET SEND_ACTION $AA %W$1%n $fix.mirc($3-)
+FSET SEND_ACTION_OTHER $AA %K>%c$2%K!%W$1%n $fix.mirc($3-)
+FSET SEND_AWAY (away - $tolower($strftime($1 %A %I:%M%p %Z)), $get.email()$vif.lp())
+FSET SEND_CTCP %K>[$c1(ctcp)%K!$h1($1)%K]%n $tolower($2-)
+FSET SEND_DCC_CHAT %K>[$c3(dcc)%K!$h3($1)%K]%n $2-
+FSET SEND_ENCRYPTED_MSG %K[%Y$1%K(%p$2%K)]%n $2-
+FSET SEND_ENCRYPTED_NOTICE %K-%Y$1%K(%p$2%K)-%n $2-
+FSET SEND_MSG %K>[$c2(msg)%K!$h2($1)%K]%n $3-
+FSET SEND_NOTICE %K>[$c3(notice)%K!$h3($1)%K]%n $3-
+FSET SEND_PUBLIC $fsp(<)%n$2$fsp(>)%n $3-
+FSET SEND_PUBLIC_OTHER $fsp(<)%n$1%K!%n$2$fsp(>)%n $3-
+FSET SERVER $G%n $1: $2-
+FSET SERVER_MSG1 $G%n $1: $2-
+FSET SERVER_MSG1_FROM $G%n $1: $2-
+FSET SERVER_MSG2 $G%n $1-
+FSET SERVER_MSG2_FROM $G%n $1-
+FSET SERVER_NOTICE %K!%P$1%K!%n $2-
+FSET SERVER_NOTICE_BOT Possible bot: %C$1 %K[%c$2-%K]%n
+FSET SERVER_NOTICE_BOT1 Possible $1 bot: %C$2 %K[%c$3-%K]%n
+FSET SERVER_NOTICE_BOT_ALARM $1 alarm activated: %C$2 %K[%c$3-%K]%n
+FSET SERVER_NOTICE_CLIENT_CONNECT Client connecting: %C$1 %K[%c$2-%K]%n
+FSET SERVER_NOTICE_CLIENT_EXIT Client exiting: %C$1 %K[%c$2-%K]%n
+FSET SERVER_NOTICE_CLIENT_INVALID Invalid username: %C$1 %K[%c$2-%K]%n
+FSET SERVER_NOTICE_CLIENT_TERM Terminating client for excess flood %C$1%K [%c$2-%K]%n
+FSET SERVER_NOTICE_FAKE Fake mode detected on $1 -> $2-
+FSET SERVER_NOTICE_GLINE  %W$1%n added a new K-Line %K[%c$2%K]%n from $3 for $4-
+FSET SERVER_NOTICE_KILL Foreign operkill: %W$1%n killed %c$2%n %K(%n$3-%K)%n
+FSET SERVER_NOTICE_KILL_LOCAL Local operkill: %W$1%n killed %c$2%n %K(%n$3-%K)%n
+FSET SERVER_NOTICE_KLINE %W$1%n added a new K-Line %K[%c$2%K]%n for $3-
+FSET SERVER_NOTICE_NICKC Nick collision: %W$1%n killed %c$2%n %K(%n$3-%K)%n
+FSET SERVER_NOTICE_OPER %C$1 %K[%c$2%K]%n is now an irc operator
+FSET SERVER_NOTICE_REHASH %W$1%n is rehashing the server config file
+FSET SERVER_NOTICE_STATS Stats $1: %C$2 %K[%c$3-%K]%n
+FSET SERVER_NOTICE_TRAFFIC_HIGH Entering high-traffic mode %K(%n$1 > $2-%K)%n
+FSET SERVER_NOTICE_TRAFFIC_NORM Resuming standard operation %K(%n$1 $2 $3-%K)%n
+FSET SERVER_NOTICE_UNAUTH Unauthorized connection from $1-
+FSET SET %B$[-30.]0 %c$1-
+FSET SET_NOVALUE %b$[-30.]0 has no value
+FSET SHITLIST  $[3]0 $[34]1 $[10]2  $3-
+FSET SHITLIST_FOOTER $get.foot()
+FSET SHITLIST_HEADER $get.head()
+FSET SIGNOFF $G %K[$c3(signoff)%K] %W$1 %K(%n$3-%K)
+FSET SILENCE $G %RWe are $1 silencing $2 at $0
+FSET SMODE $G %K[$c3(nethack)%K!$h3($3)%K] "%W$4-%K"%n by $c2($1)
+FSET STATUS %4%W$*
+FSET STATUS1 %4%W$*
+FSET STATUS2 %4%W$*
+FSET STATUS3 %4%W$*
+FSET TIMER $G $[-5]0 $[-10]1 $[-6]2 $3-
+FSET TOPIC $G $fix.v3(channel $1 topic$(hblk)\:$(cl) $2-)
+FSET TOPIC_CHANGE $G $fix.v3(topic $2 change by $(cyn)$1$(hblk)\:$(cl) $3-)
+FSET -TOPIC_CHANGE_HEADER
+FSET TOPIC_SETBY $G $fix.v3(topic $1 set by $(cyn)$2$(cl) $get.diff($3) ago)
+FSET TOPIC_UNSET $G $fix.v3(topic $2 unset by $(cyn)$1$(cl))
+FSET TRACE_OPER %R$1%n %K[%n$3%K]
+FSET TRACE_SERVER %R$1%n $2 $3 $4 %K[%n$5%K]%n $6-
+FSET TRACE_USER %R$1%n %K[%n$3%K]
+FSET USAGE $G syntax$(hblk):$(cl) $tolower(/$0 $1-)
+FSET USERLIST $get.mid() $[-16]0 $[-9]1 $[6]2 $[22]3 $[10]4 $get.mid()
+FSET USERLIST_FOOTER $get.foot()
+FSET USERLIST_HEADER $get.head()
+FSET USERMODE $G %nMode change %K[%W$4-%K]%n for user %c$3
+FSET USERS $get.mid() $c3($[7]1) %W$4$h1($[9]2) $c1($[33]3) %n$[-14]0 $get.mid()
+FSET USERS_HEADER $get.head()
+FSET USERS_SHIT $get.mid() $c3($[7]1) %W$4%Y$[9]2 %y$[33]3 %n$[-14]0 $get.mid()
+FSET USERS_TITLE $G Channel userlist for %W$1%n at ($0):
+FSET USERS_USER $get.mid() $c3($[7]1) %W$4$h2($[9]2) $c2($[33]3) %n$[-14]0 $get.mid()
+FSET VERSION $tolower($2!$3 $0!$4$5) - $prevail()$get.thw() + $logger [$logver] by $tolower($left(1 $auth))$toupper($mid(1 3 $auth))$tolower($right(1 $auth))
+FSET WALL %K!%P$1%K:%p$2%K!%n $3-
+FSET WALLOP %K!%P$1$2%K!%n $3-
+FSET WALL_AR %K!%P$1%K:%p$2%K!%n $3-
+FSET WATCH_SIGNON $G $0!$1@$2 has signed off
+FSET WATCH_SIGNOFF $G $0!$1@$2 has signed on $3
+FSET WHO $c3($0) $c1($[3]2) $h2($[-9]1) %K[$c2($3@$4)%K] ($c1($5)%K!$h1($left(1 $6))%K) 
+FSET WHOIS_ADMIN %K| %Wa%ndmin    : $0 - $1-
+FSET WHOIS_AWAY $fix.wrap(6 $c1(away) $(hblk)-$(cl) $1-)
+FSET WHOIS_BOT $fix.wrap(7 $c1(bot) $(hblk)-$(cl) $*)
+FSET WHOIS_CHANNELS $fix.wrap(2 $c1(channels) $(hblk)-$(cl) $*)
+FSET WHOIS_FOOTER $get.foot()
+FSET WHOIS_FRIEND $fix.wrap(4 $c1(friend) $(hblk)-$(cl) lvl:$0 host:$1-)
+FSET WHOIS_HEADER $get.head()
+FSET WHOIS_HELP %K| %Wh%nelp     : $0 - $1-
+FSET WHOIS_IDLE $fix.wrap(6 $c1(idle) $(hblk)-$(cl) $0h $1m $2s)
+FSET WHOIS_NAME $fix.wrap(3 $c1(ircname) $(hblk)-$(cl) $*)
+FSET WHOIS_NICK $get.mid() $h2($[-9]0) %K- $c2($[55]fix.p($1@$2)) $get.mid()
+FSET WHOIS_OPER $get.mid()  $c1(operator) %K-%n $[55]fix.p($0 has oper status) $get.mid()
+FSET WHOIS_REGISTER %K| %Wr%negister : $0 - $1-
+FSET WHOIS_SERVER $fix.wrap(4 $c1(server) $(hblk)-$(cl) $get.ip($0-1))
+FSET WHOIS_SERVICE %K| %Ws%nervice  : $0 - $1-
+FSET WHOIS_SHIT $fix.wrap(6 $c1(shit) $(hblk)-$(cl) $*)
+FSET WHOIS_SIGNON $fix.wrap(4 $c1(signon) $(hblk)-$(cl) $*)
+FSET WHOIS_ACTUALLY %K| %Wa%nctually : $0-
+FSET WHOLEFT_FOOTER $get.foot()
+FSET WHOLEFT_HEADER $get.head()
+FSET WHOLEFT_USER $get.mid() $h1($[9]0) $c1($[17]1*) $h2($[10]2) %K($c2($[19]4)%K) %W$[-5]3 $get.mid()
+FSET WHOWAS_HEADER $get.head()
+FSET WHOWAS_NICK $get.mid() %W$[-9]0%n was $c2($[53]fix.p($1@$2)) $get.mid()
+FSET WIDELIST $1-
+FSET WINDOW_SET $*
+FSET -XTERM_TITLE
+FSET 381 $G You are now an irc operator.
+FSET 391 $G %K[$c2($1)%K]%n Channel is full.
+FSET 443 $G %K[$c2($1)%K]%n Channel is full.
+FSET 471 $G %K[$c2($1)%K]%n Channel is full.
+FSET 473 $G %K[$c2($1)%K]%n Invite only channel.
+FSET 474 $G %K[$c2($1)%K]%n Banned from channel.
+FSET 475 $G %K[$c2($1)%K]%n Bad channel key.
+FSET 476 $G %K[$c2($1)%K]%n You are not opped.

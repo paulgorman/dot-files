@@ -1,0 +1,21 @@
+alias taway ${[$0]?{
+	${[$[1]0]==[-]?{
+	^local _tt $strip(- $0)
+	@delitem(away $_tt)
+	xecho -b Removed away reason $(hwht)$_tt$(cl).
+	}:{
+	@setitem(away $numitems(away) $*)
+	xecho -b Added away reason to list. Total\: $(hwht)${numitems(away)-1}$(cl)
+}}
+restub taway
+}:{
+	${numitems(away)==1?{xecho -b You have no away reasons stored.}:{
+	xecho -b Away reasons$(hblk)\:
+	^local xz
+	for (@xz=1,xz<numitems(away),@xz++) {
+	xecho -b $(hblk)!$(hwht)$xz$(hblk)!$(cl) $getitem(away $xz)
+	}
+	xecho -b syntax$(hblk)\:$(cl) /taway [-#] [reason]
+}}
+restub taway
+}}

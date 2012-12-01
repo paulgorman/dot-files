@@ -1,0 +1,5 @@
+alias convert ${[$0]?{
+	^local resolved $convert($0)
+	xecho -b ${resolved?[$0 is $resolved]:[Cannot resolve $0]}
+	restub convert
+}:{phelp conv;restub convert}}

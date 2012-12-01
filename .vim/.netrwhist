@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/usr/home/presence/samba_public_share/sbp_app'
+let g:netrw_dirhist_2='/usr/home/presence/.vim'
+let g:netrw_dirhist_3='/usr/home/presence/dotfiles/.BitchX/screens'

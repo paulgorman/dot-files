@@ -1,0 +1,1512 @@
+/*                     _ _
+ _ __ _ _ _____ ____ _(_) |
+| '_ \ '_/ -_) V / _` | | |
+| .__/_| \___|\_/\__,_|_|_|
+|_| .. prevail.sync.org ..
+
+- this is for BitchX-74p2+ (with a fix for BitchX-1.0*)
+- prevail for BitchX is now being maintained by RoboHak and fudd.
+- please report any bugs or suggestions to brian@got.net, Robohak@cris.com,
+- or to fudd or RoboHak in #bitchx on EFnet.
+- see '/phelp about' for changelog.
+*/
+
+^reset
+echo [0;1m[36C[30m‹‹‹[23C‹‹‹
+echo [1;30m    ‹‹€ﬂﬂ€‹‹   ‹‹€ﬂﬂ€‹‹   ‹‹€ﬂﬂ€‹‹  €€€    €€€ﬂﬂﬂﬂﬂﬂﬂ€‹‹  €€€ﬂ€€€    €€€
+echo [1;30m   ﬁ€€›  ﬁ€€› ﬁ€€›  ﬁ€€› ﬁ€€›  ﬁ€€› €€€    €€€  ‹€€ﬂﬂ€€€› €€€ €€€    €€€
+echo [1;30m   €€€    €€€‹€€€    €€€ﬂ€€€ﬂﬂﬂﬂﬂﬂﬂ €€€    €€€ €€€    €€€ﬂ€€€ €€€    ﬂﬂﬂ
+echo [1;30m   ﬂ[6Cﬂ   ﬂ[6Cﬂ   ﬂ[10Cﬂ[6Cﬂ   ﬂ[6Cﬂ   ﬂ ﬂ ﬂ ﬂ
+echo    [0;35m∞∞∞    ∞∞∞ ∞∞∞    ∞∞∞ ∞∞∞    ∞∞∞ ∞∞∞    ∞∞∞ ∞∞∞    ∞∞∞ ∞∞∞ ∞∞∞    ∞∞∞
+echo [1;30m∞∞ [0;30;45m≤≤≤[1C[1;40m∞∞ [0;30;45m≤≤≤[1C≤≤≤[1C[1;40m∞∞ [0;30;45m≤≤≤≤≤≤≤[1C[1;40m∞∞ [0;30;45m≤≤≤[1C≤≤≤[1C[1;40m∞∞ [0;30;45m≤≤≤≤≤≤≤[1;40m∞∞∞ [0;30;45m≤≤≤[1C≤≤≤≤≤≤≤[1C[1;40m∞∞ [0;30;45m≤≤≤[1C[1;40m∞∞
+echo    [0;30;45m±±±[4C±±±±±±±[4C±±±[1C±±±[4C±±±[1C±±±[4C±±±[1C±±±[4C±±±[1C±±±[1C±±±[4C±±±[40m
+echo    [0;30;45m∞∞∞[4C∞∞∞[1C∞∞∞[4C∞∞∞[1C∞∞∞[4C∞∞∞[1C∞∞∞[4C∞∞∞[35;40mﬂ[30;45m∞∞∞[4C∞∞∞[1C∞∞∞[35;40mﬂ[30;45m∞∞∞[4C∞∞∞[40m
+echo    [45m   [4C[35;40m€€€ﬂ€€€    €€€ﬂ€€€    €€€‹€€€    €€€ €€€    €€€‹€€€ﬂ€€€    €€€
+echo [0;35m   €€€    €€€€€€€    €€€ €€€    €€[1;45mﬂ[1C[0;35m€€€    €€€ﬂ€€€    [1;45m€[0;35m€€ €€€ €€€    €€[1;45mﬂ[40m
+echo    [0;35m€€€    €€€ €€€    €[30;45mb2[35;40m€€€€    €€[1;45m€[0;35m€€€€    €€€€€€€    [1;45m‹[0;35m€€€€€€ﬂ€€€    €€[1;45m€[40m
+echo    [45m  [0;35m€   ﬁ[45m  [40m› [45m  [1mﬂ[3C[0;35m‹[45m [40m€[45m [40m‹[45m   [4C  [1mﬂ[1C  [0;35m€    €[45m  [1C[40m€[45m [40m€    €[45m [40m€‹€[45m  [1C[40m€[45m [40m€    €[45m [40m€
+echo [0;35m   [45m  [40m€  ‹[45m [40m€ﬂ  [45m  [1m€[4C[0;35m€[45m  [1C[40mﬁ€[45m [40m›  ﬁ€€› ﬁ[1;45mﬂ[0;35m€›  ﬁ€€› ﬁ€€›  ﬁ€€› €€€ ﬁ[1;45mﬂ[0;35m€›  ﬁ€€›
+echo [0;35m   [45m  [40m€ﬂﬂﬂ[5C[45m  [40m€    ﬂﬂﬂ  ﬂ€€‹‹€€ﬂ   ﬂ€€‹‹€€ﬂ   ﬂ€€‹‹€€ﬂ  €€€  ﬂ€€‹‹€€ﬂ
+echo [0;35m   ﬂﬂﬂ[8Cﬂﬂﬂ[11Cﬂﬂﬂﬂ[7Cﬂﬂﬂﬂ[7Cﬂﬂﬂﬂ    ﬂﬂﬂ    ﬂﬂﬂﬂ
+echo  [1;30mƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ [0man openface production for BitchX by panasync [1;30mƒƒƒƒƒƒƒƒƒƒƒƒ[0m
+echo  
+
+if (!bitchx()) {
+	echo This script requires BitchX. try prevail.sync.org/pub/bitchx
+	quit I need BitchX
+}
+alias prevail {@function_return=[prevail[0123a]]}
+if (V<19980105) {
+	echo $G $prevail() was specifically designed to be run with BitchX-74p2, you are running $(J)... fix it.
+	quit I need BitchX-74p2
+}
+
+@ cl    = [\[0m
+@ blk   = [\[0m\\[30m
+@ blu   = [\[0m\\[34m
+@ grn   = [\[0m\\[32m
+@ cyn   = [\[0m\\[36m
+@ red   = [\[0m\\[31m
+@ mag   = [\[0m\\[35m
+@ yel   = [\[0m\\[33m
+@ wht   = [\[0m\\[37m
+@ hblk  = [\[1m\\[30m
+@ hblu  = [\[1m\\[34m
+@ hgrn  = [\[1m\\[32m
+@ hcyn  = [\[1m\\[36m
+@ hred  = [\[1m\\[31m
+@ hmag  = [\[1m\\[35m
+@ hyel  = [\[1m\\[33m
+@ hwht  = [\[1m\\[37m
+@ bwht  = [\[47m
+@ bmag  = [\[45m
+@ bblu  = [\[44m
+@ bred  = [\[41m
+@ bblk  = [\[40m
+@ bgrn  = [\[42m
+@ byel  = [\[43m
+@ bcyn  = [\[46m
+# [0m
+
+set indent on
+set hard_uh_notify on
+set notify_handler QUIET
+set exec_protection on
+set flood_warning on
+set flood_protection on
+set ctcp_delay 3
+set ctcp_flood_protection on
+set notify_on_termination off
+set dcc_bar_type 1
+set beep_on_msg msg
+set help_window off
+set help_prompt off
+set auto_away off
+set warn_of_ignores off
+set max_recursions 100
+set channel_name_width 0
+set mail 2
+set continued_line  
+set num_opmodes 4
+set status_window [˛]
+set msglog off
+set beep on
+set msglog_level MSGS NOTICES DCC CTCP
+set http_grab on
+set ftp_grab on
+set dcc_ansi_chat on
+set deop_on_deopflood 5
+set kick_on_deopflood 7
+set kick_on_kickflood 5
+set kick_on_joinflood 5
+set kick_on_nickflood 3
+set kick_on_pubflood 30
+set deopflood_time 30
+set kickflood_time 30
+set nickflood_time 30
+set joinflood_time 30
+set pubflood_time 10
+set kickflood off
+set joinflood on
+set send_away_msg on
+set flood_after 15
+set flood_rate 15
+set dcc_send_limit 6
+set dcc_get_limit 15
+set ainv 0
+set auto_rejoin 1
+set auto_whowas off
+set show_who_hopcount on
+set cdcc_prompt %K[%Bc%bdcc%K]
+set default_reason fucker
+set status_no_repeat on
+set window_quiet on
+set server_prompt [1;30m[[1;34ms[0m[34merver[1;30m][0m
+do ^set user_information $Y
+do ^set auto_response $[4]N
+#bantype b
+
+@srand(31337)
+
+/* client_info */
+@shit.0 =[scars from falling down]
+@shit.1 =[hit songs for girls]
+@shit.2 =[bastard song]
+@shit.3 =[down with people]
+@shit.4 =[only sheep need a leader]
+@shit.5 =[headache remedy]
+@shit.6 =[..and other little nasty freaks]
+@shit.7 =[its weird being a bob]
+@shit.8 =[logical bullshit]
+@shit.9 =[eye of the donkey]
+alias get.shit {@function_return=shit[$rand(10)]}
+do ^set client_information $get.shit()
+
+/* script assigns */
+@memofile=[~/pv/pv.memo]
+@alogfile=[~/pv/pv.log]
+@awayfile=[~/pv/pv.away]
+@quitfile=[~/pv/pv.quit]
+@kickfile=[~/pv/pv.kick]
+@nickfile=[~/pv/pv.nick]
+@savefile=[~/pv/pv.save]
+@helpfile=[~/pv/pv.help]
+
+@awaytime=[??]
+@verbose =[1]
+@gainop  =[0]
+@idlemin =[0]
+@mcolor  =[1]
+@logging =[0]
+@logaway =[1]
+@pubaway =[1]
+@paging  =[1]
+@mkick   =[0]
+@rkick   =[0]
+@ikick   =[0]
+@email   =[0]
+@tbar    =[0]
+@klogo   =[0]
+@echar   =[1]
+@emax    =[24]
+@ncomp   =[1]
+@ncmax   =[21]
+@statbar =[1]
+@smax    =[7]
+@topbar  =[1]
+@tmax    =[4]
+@dict.serv=[dict.org]
+@dict.port=2628
+
+@AA=[$(hblk)˙$(mag)Ï$(hblk)˙$(cl)]
+
+@fkey[2]=[user -ops]
+@fkey[3]=[user -nonops]
+@fkey[4]=[sv]
+@fkey[5]=[showidle]
+@fkey[6]=[dcc stats]
+@fkey[7]=[chanst]
+@fkey[8]=[ostat]
+@fkey[INS]=[operview]
+@fkey[DEL]=[cloak]
+
+bind ^A self_insert
+bind ^T parse_command dcc.doget
+bind ^R parse_command dcc.noget
+bind ^N parse_command dcc.ig
+bind ^O self_insert
+bind ^W meta5_character
+bind ^Y parse_command ttbar
+#bind meta2-2 TOGGLE_OV
+bind meta2-2 parse_command do.fkey ins
+bind meta2-3 parse_command do.fkey del
+bind meta3-A parse_command phelp
+bind meta3-B parse_command do.fkey 2
+bind meta3-C parse_command do.fkey 3
+bind meta3-D parse_command do.fkey 4
+bind meta3-E parse_command do.fkey 5
+bind meta3-7 parse_command do.fkey 6
+bind meta3-8 parse_command do.fkey 7
+bind meta3-9 parse_command do.fkey 8
+
+/* BitchX formats */
+FSET FORMAT_381 $G You are now an irc operator.
+FSET FORMAT_391 $G %K[$c2($1)%K]%n Channel is full.
+FSET FORMAT_443 $G %K[$c2($1)%K]%n Channel is full.
+FSET FORMAT_471 $G %K[$c2($1)%K]%n Channel is full.
+FSET FORMAT_473 $G %K[$c2($1)%K]%n Invite only channel.
+FSET FORMAT_474 $G %K[$c2($1)%K]%n Banned from channel.
+FSET FORMAT_475 $G %K[$c2($1)%K]%n Bad channel key.
+FSET FORMAT_476 $G %K[$c2($1)%K]%n You are not opped.
+FSET FORMAT_SEND_ACTION $AA %W$1%n $fix.mirc($3-)
+FSET FORMAT_SEND_ACTION_OTHER $AA %K>%c$2%K!%W$1%n $fix.mirc($3-)
+FSET FORMAT_ACTION $AA %W$1%n $fix.mirc($4-)
+FSET FORMAT_ACTION_AR $AA %W$1%n $fix.mirc($4-)
+FSET FORMAT_ACTION_OTHER $AA %n$tolower($3)%K!%W$1%n $fix.mirc($4-)
+FSET FORMAT_ACTION_OTHER_AR $AA %n$tolower($3)%K!%W$1%n $fix.mirc($4-)
+FSET FORMAT_ACTION_USER $AA %K(%W$1%K)%w $fix.mirc($4-)
+FSET FORMAT_ACTION_USER_AR $AA %n$3%K!%W$1%n $fix.mirc($4-)
+FSET FORMAT_ALIAS Alias $[20.]0 $1-
+FSET FORMAT_ASSIGN Assign $[20.]0 $1-
+FSET -FORMAT_AWAY
+FSET -FORMAT_BACK
+FSET FORMAT_BANS $get.mid() $(hwht)#$[2]0 $c3($[10]1) $h2($[9]3) $c2($[8]nospace($get.diff2($4))) $(hblk)($(hwht)$[31]2$(hblk)) $get.mid()
+FSET FORMAT_BANS_HEADER $get.head()
+FSET FORMAT_BITCH %RBitch Mode Activated%n $1 $4 $5 on $3
+FSET FORMAT_BOT $get.mid() $c3($[-2]0 $[2]1) $h2($[11]2) $c2($[10]3) $h1($[38]4) $get.mid()
+FSET FORMAT_BOT_FOOTER $get.foot()
+FSET FORMAT_BOT_HEADER $get.head()
+FSET FORMAT_BWALL %K[$c3(wallop)%K!$h3($1)%K(%W$2%K)]%n $fix.mirc($4-)
+FSET FORMAT_CHANNEL_SIGNOFF $G %K[$c3(signoff)%K!$h3($3)%K] %W$1 %K(%n$fix.mirc($4-)%K)
+FSET FORMAT_CONNECT $G Connecting to server $1/%c$2%n
+FSET FORMAT_CSET $c2($[-10]1) %n$[22˙]0 %W$[5]2-
+FSET FORMAT_CTCP $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_CLOAK $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_CLOAK_FUNC $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_CLOAK_FUNC_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_CLOAK_UNKNOWN $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_CLOAK_UNKNOWN_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_CLOAK_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_FUNC $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_FUNC_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_REPLY $G $fix.v5($tolower($3) $1 $fix.ping($4-))
+FSET FORMAT_CTCP_UNKNOWN $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_UNKNOWN_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_CTCP_USER $G $fix.v2(ctcp $1 $2 $3 $4-)
+FSET FORMAT_DCC_CHAT %K$c3(dcc)%K!$h3($1)%K%n $fix.mirc($3-)
+FSET FORMAT_DCC_CONNECT $G %K[$c3(dcc connect)%K!$h3($tolower($1))%K]%n with $h2($2) %K($c2($4, port $5)%K)%n established.
+FSET FORMAT_DCC_ERROR $G %K[$c3(dcc $tolower($1))%K!$h3(lost)%K] "%W$2%K" %K($c2($3-)%K)%n
+FSET FORMAT_DCC_LOST $G %K[$c3(dcc $tolower($1))%K!$h3(complete)%K] "%W$2%K" %K($c2($3)%K)%n $4 $5 %K[$c2($6secs, $7 $8/s)%K]%n
+FSET FORMAT_DCC_REQUEST $G %K[$c3(dcc $tolower($1))%K!$h3(request)%K] "%W$2%K" %K($c2($8 $7)%K)%n from $h2($3) %K($c2($4)%K)%n
+FSET FORMAT_DESYNC $G $fix.v3(desync $1 $2)
+FSET FORMAT_DISCONNECT $G Use %W/server%n to connect to a server.
+FSET FORMAT_ENCRYPTED_NOTICE %K-%Y$1%K(%p$fix.d($2)%K)-%n $fix.mirc($3-)
+FSET FORMAT_ENCRYPTED_PRIVMSG %K[%Y$1%K(%p$2%K)]%n $fix.mirc($3-)
+FSET FORMAT_FLOOD %C$1%n flood detected from %W$2 %K(%n$3%K)%n on %K[%c$4%K]
+FSET FORMAT_FRIEND_JOIN $G $fix.v(joined $1 $2 $3)
+FSET FORMAT_HELP $*
+FSET FORMAT_HOOK $*
+FSET FORMAT_IGNORE_INVITE $G You have been invited to $1-
+FSET FORMAT_IGNORE_MSG %K[%P$1%P$2%K(%p$3%K)]%n $fix.mirc($4-)
+FSET FORMAT_IGNORE_MSG_AWAY %K[%P$1%P$2%K(%p$3%K)]%n $fix.mirc($4-)
+FSET FORMAT_IGNORE_NOTICE %K-%P$2%K(%p$fix.d($3)%K)-%n $fix.mirc($4-)
+FSET FORMAT_IGNORE_WALL %K%P$1%n $fix.mirc($2-)
+FSET FORMAT_INVITE $G $fix.v3(Invite $2 from $1)
+FSET FORMAT_INVITE_USER $G Inviting %W$1%n to %c$2-
+FSET FORMAT_JOIN $G $fix.v(joined $1 $2 $3)
+FSET FORMAT_KICK $G $fix.v1(was kicked $3 $2 $1 $fix.mirc($4-))
+FSET FORMAT_KICK_USER $G $fix.v1(were kicked You $2 $1 $fix.mirc($4-))
+FSET FORMAT_KILL $G %RYou have been killed by $1 for $fix.mirc($2-)
+FSET FORMAT_LEAVE $G $fix.v(left $1 $2 $3)
+FSET FORMAT_LINKS %K≥%n$[24]0%K≥ ≥%n$[24]1%K≥ ≥%n$[3]2%K≥ ≥%n$[13]3%K≥
+FSET FORMAT_LIST $[12]1 $[-5]2   $[40]3-
+FSET FORMAT_MAIL $G You have new mail.
+FSET FORMAT_MODE $G %K[$c3(mode)%K!$h3($3)%K] %K"%W$4-%K"%n by $c2($1)
+FSET FORMAT_MODE_CHANNEL $G %K[$c3(mode)%K!$h3($3)%K] %K"%W$4-%K"%n by $c2($1)
+FSET FORMAT_MSG %K[$h3($1)%K!$c3($2)%K]%n $fix.mirc($3-)
+FSET FORMAT_MSGCOUNT [$*]
+FSET FORMAT_MSG_GROUP %K-%P$1%K!%p$2%K-%n $fix.mirc($3-)
+FSET FORMAT_NAMES $G %K[%nusers%K($1%K!$2%K)]%n $3
+FSET -FORMAT_NAMES_BANNER
+FSET FORMAT_NAMES_BOT $G %K[%nbots%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET FORMAT_NAMES_BOTCOLOR %K[%C$0%G$[10]1%K]
+FSET -FORMAT_NAMES_FOOTER
+FSET FORMAT_NAMES_FRIEND $G %K[%nfriends%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET FORMAT_NAMES_FRIENDCOLOR %K[%C$0%Y$[10]1%K]
+FSET FORMAT_NAMES_IRCOP $G %K[%nopers%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET FORMAT_NAMES_NICKCOLOR %K[%B $[10]1%K]
+FSET FORMAT_NAMES_NONOP $G %K[%nnon-ops%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET FORMAT_NAMES_OP $G %K[%nops%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET FORMAT_NAMES_OPCOLOR %K[%C$0%n%B$[10]1%K]
+FSET FORMAT_NAMES_SHIT $G %K[%nfuckers%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET FORMAT_NAMES_SHITCOLOR %K[%C$0%n%R$[10]1%K]
+FSET FORMAT_NAMES_VOICE $G %K[%nvoiced%K($c3($1)%K!$h3($2)%K)]%n $3
+FSET FORMAT_NAMES_VOICECOLOR %K[%Mv%B$[10]1%K]
+FSET FORMAT_NETADD $G %nAdded: %W$1-2
+FSET FORMAT_NETJOIN $G %nNetjoined: %W$1-2
+FSET FORMAT_NETSPLIT $G %nNetSplit detected: %W$1%n split from %W$2 %K[%c$0%K]
+FSET -FORMAT_NETSPLIT_HEADER
+FSET FORMAT_NICKNAME $G $fix.v4($1 $3)
+FSET FORMAT_NICKNAME_OTHER $G $fix.v4($1 $4)
+FSET FORMAT_NICKNAME_USER $G $fix.v4($(hwht)you$(hblk)\($c2($1)$(hblk)\)$(cl) $3)
+FSET FORMAT_NICK_AUTO $do.ncomp($*)
+FSET FORMAT_NICK_COMP $do.ncomp($*)
+FSET FORMAT_NICK_MSG $*
+FSET FORMAT_NONICK $get.head()$get.mid() %W$[9]1%K:%n No such nick. $repeat(42  ) $get.mid()
+FSET FORMAT_NOTE ($0) ($1) ($2) ($3) ($4) ($5-)
+FSET FORMAT_NOTICE %Kƒ$h1($1)%K!$c1($fix.d($2))%Kƒ%n $fix.mirc($3-)
+FSET FORMAT_NOTIFY_OFF $[10]0 $[35]1 $[-6]2 $[10]3 $4
+FSET FORMAT_NOTIFY_ON $[10]0 $[35]1 $[-6]2 $[10]3 $4
+FSET FORMAT_NOTIFY_SIGNOFF $G %K[$c3(notify)%K!$h3(signoff)%K] $c2($1) $c1(@)$h1($0)
+FSET FORMAT_NOTIFY_SIGNOFF_UH $G %K[$c3(notify)%K!$h3(signoff)%K] $h2($1) %K($c2($2)%K)%n $c1(@)$h1($0)
+FSET FORMAT_NOTIFY_SIGNON $G %K[$c3(notify)%K!$h3(signon)%K] $c2($1) $c1(@)$h1($0)
+FSET FORMAT_NOTIFY_SIGNON_UH $G %K[$c3(notify)%K!$h3(signon)%K] $h2($1) %K($c2($2)%K)%n $c1(@)$h1($0)
+FSET FORMAT_OPER %C$1 %K[%c$2%K]%n is now an irc operator
+FSET FORMAT_PUBLIC $fp(<)%n$1$fp(>)%n $fix.mirc($3-)
+FSET FORMAT_PUBLIC_AR $fp(<)$h2($1)$fp(>)%n $fix.mirc($3-)
+FSET FORMAT_PUBLIC_MSG $c3(\()%n$1%K!%n$3$c3(\))%n $fix.mirc($4-)
+FSET FORMAT_PUBLIC_MSG_AR $c3(\()$h2($1)%K!%n$3$c3(\))%n $fix.mirc($4-)
+FSET FORMAT_PUBLIC_NOTICE %Kƒ%n$1%K!%n$3%Kƒ%n $fix.mirc($4-)
+FSET FORMAT_PUBLIC_NOTICE_AR %Kƒ$h2($1)%K!%n$3%Kƒ%n $fix.mirc($4-)
+FSET FORMAT_PUBLIC_OTHER %K<%n$2%K!%n$1%K>%n $fix.mirc($3-)
+FSET FORMAT_PUBLIC_OTHER_AR %K<%n$2%K!$h2($1)%K>%n $fix.mirc($3-)
+FSET FORMAT_REL >[$1] $4-
+FSET FORMAT_RELM [$1!$2] $4-
+FSET FORMAT_RELN -$1!$fix.d($2)- $4-
+FSET FORMAT_RELS $1-
+FSET FORMAT_RELSM >[msg($1)] $2-
+FSET FORMAT_RELSN >-notice($1)- $2-
+FSET FORMAT_SEND_AWAY (away - $tolower($strftime($1 %A %I:%M%p %Z)), $get.email()$vif.lp())
+FSET FORMAT_SEND_CTCP %K>[$c1(ctcp)%K!$h1($1)%K]%n $tolower($2-)
+FSET FORMAT_SEND_DCC_CHAT %K>[$c3(dcc)%K!$h3($1)%K]%n $2-
+FSET FORMAT_SEND_MSG %K>[$c2(msg)%K!$h2($1)%K]%n $3-
+FSET FORMAT_SEND_NOTICE %K>[$c3(notice)%K!$h3($1)%K]%n $3-
+FSET FORMAT_SEND_PUBLIC $fsp(<)%n$2$fsp(>)%n $3-
+FSET FORMAT_SEND_PUBLIC_OTHER $fsp(<)%n$1%K!%n$2$fsp(>)%n $3-
+FSET FORMAT_SERVER $G%n $1: $2-
+FSET FORMAT_SERVER_MSG1 $G%n $1: $2-
+FSET FORMAT_SERVER_MSG1_FROM $G%n $1: $2-
+FSET FORMAT_SERVER_MSG2 $G%n $1-
+FSET FORMAT_SERVER_MSG2_FROM $G%n $1-
+FSET FORMAT_SERVER_NOTICE %K!%P$1%K!%n $2-
+FSET FORMAT_SERVER_NOTICE_BOT Possible bot: %C$1 %K[%c$2-%K]%n
+FSET FORMAT_SERVER_NOTICE_BOT1 Possible $1 bot: %C$2 %K[%c$3-%K]%n
+FSET FORMAT_SERVER_NOTICE_BOT_ALARM $1 alarm activated: %C$2 %K[%c$3-%K]%n
+FSET FORMAT_SERVER_NOTICE_CLIENT_CONNECT Client connecting: %C$1 %K[%c$2-%K]%n
+FSET FORMAT_SERVER_NOTICE_CLIENT_EXIT Client exiting: %C$1 %K[%c$2-%K]%n
+FSET FORMAT_SERVER_NOTICE_CLIENT_INVALID Invalid username: %C$1 %K[%c$2-%K]%n
+FSET FORMAT_SERVER_NOTICE_CLIENT_TERM Terminating client for excess flood %C$1%K [%c$2-%K]%n
+FSET FORMAT_SERVER_NOTICE_FAKE Fake mode detected on $1 -> $2-
+FSET FORMAT_SERVER_NOTICE_KILL Foreign operkill: %W$1%n killed %c$2%n %K(%n$3-%K)%n
+FSET FORMAT_SERVER_NOTICE_KILL_LOCAL Local operkill: %W$1%n killed %c$2%n %K(%n$3-%K)%n
+FSET FORMAT_SERVER_NOTICE_KLINE %W$1%n added a new K-Line %K[%c$2%K]%n for $3-
+FSET FORMAT_SERVER_NOTICE_NICKC Nick collision: %W$1%n killed %c$2%n %K(%n$3-%K)%n
+FSET FORMAT_SERVER_NOTICE_OPER %C$1 %K[%c$2%K]%n is now an irc operator
+FSET FORMAT_SERVER_NOTICE_REHASH %W$1%n is rehashing the server config file
+FSET FORMAT_SERVER_NOTICE_STATS Stats $1: %C$2 %K[%c$3-%K]%n
+FSET FORMAT_SERVER_NOTICE_TRAFFIC_HIGH Entering high-traffic mode %K(%n$1 > $2-%K)%n
+FSET FORMAT_SERVER_NOTICE_TRAFFIC_NORM Resuming standard operation %K(%n$1 $2 $3-%K)%n
+FSET FORMAT_SERVER_NOTICE_UNAUTH Unauthorized connection from $1-
+FSET FORMAT_SET %B$[-30.]0 %c$1-
+FSET FORMAT_SET_NOVALUE %b$[-30.]0 has no value
+FSET FORMAT_SHITLIST  $[3]0 $[34]1 $[10]2  $3-
+FSET FORMAT_SHITLIST_FOOTER $get.foot()
+FSET FORMAT_SHITLIST_HEADER $get.head()
+FSET FORMAT_SIGNOFF $G %K[$c3(signoff)%K] %W$1 %K(%n$3-%K)
+FSET FORMAT_SILENCE $G %RWe are $1 silencing $2 at $0
+FSET FORMAT_SMODE $G %K[$c3(nethack)%K!$h3($3)%K] "%W$4-%K"%n by $c2($1)
+FSET FORMAT_STATUS %4%W$*
+FSET FORMAT_STATUS1 %4%W$*
+FSET FORMAT_STATUS2 %4%W$*
+FSET FORMAT_STATUS3 %4%W$*
+FSET FORMAT_TIMER $G $[-5]0 $[-10]1 $[-6]2 $3-
+FSET FORMAT_TOPIC $G $fix.v3(channel $1 topic$(hblk)\:$(cl) $2-)
+FSET FORMAT_TOPIC_CHANGE $G $fix.v3(topic $2 change by $(cyn)$1$(hblk)\:$(cl) $3-)
+FSET -FORMAT_TOPIC_CHANGE_HEADER
+FSET FORMAT_TOPIC_SETBY $G $fix.v3(topic $1 set by $(cyn)$2$(cl) $get.diff($3) ago)
+FSET FORMAT_TOPIC_UNSET $G $fix.v3(topic $2 unset by $(cyn)$1$(cl))
+FSET FORMAT_TRACE_OPER %R$1%n %K[%n$3%K]
+FSET FORMAT_TRACE_SERVER %R$1%n $2 $3 $4 %K[%n$5%K]%n $6-
+FSET FORMAT_TRACE_USER %R$1%n %K[%n$3%K]
+FSET FORMAT_USAGE $G syntax$(hblk):$(cl) $tolower(/$0 $1-)
+FSET FORMAT_USERLIST $get.mid() $[-16]0 $[-9]1 $[6]2 $[22]3 $[10]4 $get.mid()
+FSET FORMAT_USERLIST_FOOTER $get.foot()
+FSET FORMAT_USERLIST_HEADER $get.head()
+FSET FORMAT_USERMODE $G %nMode change %K[%W$4-%K]%n for user %c$3
+FSET FORMAT_USERS $get.mid() $c3($[7]1) %W$4$h1($[9]2) $c1($[33]3) %n$[-14]0 $get.mid()
+FSET FORMAT_USERS_BOT $get.mid() $c3($[7]1) %W$4$h3($[9]2) $c3($[33]3) %n$[-14]0 $get.mid()
+FSET FORMAT_USERS_HEADER $get.head()
+FSET FORMAT_USERS_USER $get.mid() $c3($[7]1) %W$4$h2($[9]2) $c2($[33]3) %n$[-14]0 $get.mid()
+FSET FORMAT_USERS_SHIT $get.mid() $c3($[7]1) %W$4%Y$[9]2 %y$[33]3 %n$[-14]0 $get.mid()
+FSET FORMAT_VERSION $tolower($2!$3 $0!$4$5) - $prevail()$get.thw()
+FSET FORMAT_WALL %K!%P$1%K:%p$2%K!%n $3-
+FSET FORMAT_WALLOP %K!%P$1$2%K!%n $3-
+FSET FORMAT_WALL_AR %K!%P$1%K:%p$2%K!%n $3-
+FSET FORMAT_WHO $c3($0) $c1($[3]2) $h2($[-9]1) %K[$c2($3@$4)%K] ($c1($5)%K!$h1($left(1 $6))%K) 
+FSET FORMAT_WHOIS_AWAY $fix.wrap(6 $c1(away) $(hblk)-$(cl) $1-)
+FSET FORMAT_WHOIS_BOT $fix.wrap(7 $c1(bot) $(hblk)-$(cl) $*)
+FSET FORMAT_WHOIS_CHANNELS $fix.wrap(2 $c1(channels) $(hblk)-$(cl) $*)
+FSET FORMAT_WHOIS_FOOTER $get.foot()
+FSET FORMAT_WHOIS_FRIEND $fix.wrap(4 $c1(friend) $(hblk)-$(cl) lvl:$0 host:$1-)
+FSET FORMAT_WHOIS_HEADER $get.head()
+FSET FORMAT_WHOIS_IDLE $fix.wrap(6 $c1(idle) $(hblk)-$(cl) $0h $1m $2s)
+FSET FORMAT_WHOIS_NAME $fix.wrap(3 $c1(ircname) $(hblk)-$(cl) $*)
+FSET FORMAT_WHOIS_NICK $get.mid() $h2($[-9]0) %K- $c2($[55]fix.p($1@$2)) $get.mid()
+FSET FORMAT_WHOIS_OPER $get.mid()  $c1(operator) %K-%n $[55]fix.p($0 has oper status) $get.mid()
+FSET FORMAT_WHOIS_SERVER $fix.wrap(4 $c1(server) $(hblk)-$(cl) $get.ip($0-1))
+FSET FORMAT_WHOIS_SHIT $fix.wrap(6 $c1(shit) $(hblk)-$(cl) $*)
+FSET FORMAT_WHOIS_SIGNON $fix.wrap(4 $c1(signon) $(hblk)-$(cl) $*)
+FSET FORMAT_WHOLEFT_FOOTER $get.foot()
+FSET FORMAT_WHOLEFT_HEADER $get.head()
+FSET FORMAT_WHOLEFT_USER $get.mid() $h1($[9]0) $c1($[17]1*) $h2($[10]2) %K($c2($[19]4)%K) %W$[-5]3 $get.mid()
+FSET FORMAT_WHOWAS_HEADER $get.head()
+FSET FORMAT_WHOWAS_NICK $get.mid() %W$[-9]0%n was $c2($[53]fix.p($1@$2)) $get.mid()
+FSET FORMAT_WIDELIST $1-
+FSET FORMAT_WINDOW_SET $*
+FSET FORMAT_DCC $fix.st.dcc($*)
+
+/* this is for aliases that load and unload as needed */
+alias makestub {^stub alias $0 ~/pv/stub/$0.stub}
+alias restub {${[$1]?{fe ($1-) ss {^alias -$ss}}:[]};^makestub $0}
+fe ($msar(g#$(HOME)/pv/stub/##.stub##$glob(~/pv/stub\/*.stub))) gg {makestub $gg}
+
+/* status bar manipulation */
+alias init.status {
+	^fix.topbar
+	^fix.status
+	switch ($statbar) {
+(1) {
+^set status_format1 $(cl)$(h1)⁄ƒ$(c1)ƒ %*%=%@$(c2)%N$(hblk)%# %C%+ %!  %> %3%M%F%D%L $(c2)ƒ$(h2)ƒø
+^set status_format2 $(cl)$(h1)¿$(c1)ƒ$(hblk)ƒ %T%6%A%Q %> %B%5%S $(hblk)ƒ$(c2)ƒ$(h2)Ÿ
+^set status_topic $(cl) %-
+^set status_chanop $(h2)@
+^set status_voice $(h2)+
+^set status_oper $(h2)*
+^set status_umode $(hblk)!$(h2)+%#
+^set status_mode $(hblk)!$(h2)+%+
+^set status_channel $(c2)%C
+^set status_lag $(c2)l$(hblk)!$(h1)%L
+^set status_mail $(c2)m$(hblk)!$(h2)%M $(c3)˘ 
+^set status_notify $(c2)n$(hblk)!$(h2)%F $(c3)˘ 
+^set status_users $(hblk)\($(c2)o$(hblk)!$(h2)%! $(c2)n$(hblk)!$(h2)%! $(c2)i$(hblk)!$(h2)%!$(hblk)\)
+^set status_clock $(c2)t$(hblk)!$(cl)$(h1)%T
+^set status_hold 
+^set status_hold_lines $(c2)hold$(hblk)!$(h1)%B $(c3)˘
+^set status_query  $(c3)˘ $(c2)q$(hblk)!$(h1)%Q
+^set status_server $(c2)s$(hblk)!$(cl)$(h1)%S
+}
+(2) {
+^set status_format1 $(cl)$(c1) ‹˛ $(hblk)⁄ƒ˙ %*%=%@$(c2)%N$(hblk)%# $(c3)˘ %C%+ %!  %> %3%M%F%D%L $(hblk)˙ƒƒø
+^set status_format2 $(cl)$(c1)ﬂ$(h1)≤$(c1)ﬂ $(hblk)¿ƒƒ˙ %T%6%A%Q %> %B%5%S $(hblk)˙ƒŸ
+^set status_topic $(cl) %-
+^set status_chanop $(h2)@
+^set status_voice $(h2)+
+^set status_oper $(h2)*
+^set status_umode $(hblk)!$(h2)+%#
+^set status_mode $(hblk)!$(h2)+%+
+^set status_channel $(c2)%C
+^set status_lag $(c2)lag$(hblk)!$(h1)%L
+^set status_mail $(c2)mail$(hblk)!$(h1)%M $(c3)˘ 
+^set status_notify $(c2)act$(hblk)!$(h1)%F $(c3)˘ 
+^set status_users $(hblk)[$(c2)o$(hblk)!$(h1)%! $(c2)n$(hblk)!$(h1)%! $(c2)i$(hblk)!$(h1)%!$(hblk)]
+^set status_clock $(c2)time$(hblk)!$(cl)$(h1)%T
+^set status_hold 
+^set status_hold_lines $(c3)˘ $(c2)hold$(hblk)!$(h1)%B $(c3)˘
+^set status_query  $(c3)˘ $(c2)query$(hblk)!$(h1)%Q
+^set status_server $(c2)server$(hblk)!$(cl)$(h1)%S
+}
+(3) {
+^set status_format1 $(cl)$(h3).$(hwht)˘ $(hblk)\(%*%=%@$(c2)%N$(hblk)%# $(c3)˘ %C%+ %!  %>%3%M%F%D%5$(hblk)\) $(hwht)˘$(h3).
+^set status_format2 $(cl)$(c3)`$(hblk)˙ \(%T%6%L%A%Q %> %B%S$(hblk)\) ˙$(c3)'
+^set status_topic $(cl) %-
+^set status_chanop $(h2)@
+^set status_voice $(h2)+
+^set status_oper $(h2)*
+^set status_umode $(hblk)!$(h2)+%#
+^set status_mode $(hblk)!$(h2)+%+
+^set status_channel $(c2)%C
+^set status_lag $(c2)lag$(hblk)!$(h1)%L
+^set status_mail $(c2)mail$(hblk)!$(h1)%M $(c3)˘ 
+^set status_notify $(c2)act$(hblk)!$(h1)%F $(c3)˘ 
+^set status_users $(hblk)[$(c2)o$(hblk)!$(h2)%! $(c2)n$(hblk)!$(h2)%! $(c2)i$(hblk)!$(h2)%!$(hblk)]
+^set status_clock $(c2)time$(hblk)!$(cl)$(h1)%T
+^set status_hold 
+^set status_hold_lines $(c2)hold$(hblk)!$(h1)%B $(c3)˘ 
+^set status_query  $(c3)˘ $(c2)query$(hblk)!$(h1)%Q
+^set status_server $(c2)serv$(hblk)!$(cl)$(h1)%S
+}
+(4) {
+^set status_format1 $(cl)$(h3)÷ %*%=%@$(c2)%N$(hblk)%# %C%+ %!  %>%3%M%F%D%L $(c3)∑
+^set status_format2 $(cl)$(c3)” %T%6%A%Q %> %B%5 $(h3)Ω
+^set status_topic $(cl) %-
+^set status_chanop $(h2)@
+^set status_voice $(h2)+
+^set status_oper $(h2)*
+^set status_umode $(hblk)\($(h2)+%#$(hblk)\)
+^set status_mode $(hblk)\($(h2)+%+$(hblk)\)
+^set status_channel $(c2)%C
+^set status_lag  $(c2)lag$(hblk)\($(h1)%L$(hblk)\)
+^set status_mail  $(c2)mail$(hblk)\($(h1)%M$(hblk)\)
+^set status_notify  $(c2)act$(hblk)\($(h1)%F$(hblk)\)
+^set status_users $(hblk)\($(c2)o$(hblk)!$(h1)%! $(c2)n$(hblk)!$(h1)%! $(c2)i$(hblk)!$(h1)%!$(hblk)\)
+^set status_clock $(c2)time$(hblk)\($(cl)$(h1)%T$(hblk)\)
+^set status_hold 
+^set status_hold_lines $(c2)hold$(hblk)\($(h1)%B$(hblk)\) 
+^set status_query  $(c2)query$(hblk)\($(h1)%Q$(hblk)\)
+^set status_server $(c2)server$(hblk)\($(cl)$(h1)%S$(hblk)\)
+}
+(5) {
+^set status_format1 $(cl)$(hblk)÷$(c1)ƒ$(h1)ƒ\(%*%=%@$(c2)%N$(hblk)%# $(c3)Ï %C%+ %> %3 %B%F%M%D%L$(h1)\)ƒ$(c1)ƒ$(hblk)∑
+^set status_format2 $(cl)$(hblk)”$(c1)ƒ$(h1)ƒ\(%T%6%A%Q %> %5$(h1)\)ƒ$(c1)ƒ$(hblk)Ω
+^set status_topic $(cl) %-
+^set status_chanop $(h2)@
+^set status_voice $(h2)+
+^set status_oper $(h2)*
+^set status_umode $(hblk)/$(h2)+%#
+^set status_mode $(hblk)/$(h2)+%+
+^set status_channel $(c2)%C
+^set status_lag $(c2)lag$(hblk)/$(h2)%L
+^set status_mail $(c2)mail$(hblk)/$(h2)%M $(c3)Ï 
+^set status_notify $(c2)act$(hblk)/$(h2)%F $(c3)Ï 
+^set status_users $(hblk)\($(c2)o$(hblk)/$(h2)%! $(c2)n$(hblk)/$(h2)%! $(c2)i$(hblk)/$(h2)%!$(hblk)\)
+^set status_clock $(c2)time$(hblk)/$(h2)%T
+^set status_hold 
+^set status_hold_lines $(c2)hold$(hblk)!$(h1)%B $(c3)Ïˇ
+^set status_query  $(c3)Ï $(c2)query$(hblk)/$(h2)%Q
+^set status_server $(c2)serv$(hblk)/$(cl)$(h1)%S
+}
+(6) {
+^set status_format1 $(cl)$(hblk):$(cl):$(hwht): %*%=%@$(c2)%N$(hblk)%# $(hblk)˛ %C%+ %!  %> %3 $(hblk)[%B%F%M%D%L$(hblk)] $(hwht):$(cl):$(hblk):
+^set status_format2 $(cl)$(hblk):$(cl):$(hwht): $(hblk)[%T%6%A%Q$(hblk)] %> $(hblk)[%|$(hblk)] $(hwht):$(cl):$(hblk):
+^set status_topic $(cl) %-
+^set status_chanop $(h1)@
+^set status_voice $(h1)+
+^set status_oper $(h1)*
+^set status_umode $(hblk)!$(h1)+%#
+^set status_mode $(hblk)!$(h1)+%+
+^set status_channel $(c2)%C
+^set status_lag $(c1)lag$(hblk)!$(h1)%L
+^set status_mail $(c1)mail$(hblk)!$(h1)%M $(hblk)˛ 
+^set status_notify $(c1)act$(hblk)!$(h1)%F $(hblk)˛ 
+^set status_users $(hblk)[$(c1)o$(hblk)!$(c2)%! $(c1)n$(hblk)!$(c2)%! $(c1)i$(hblk)!$(c2)%!$(hblk)]
+^set status_clock $(c1)time$(hblk)!$(h1)%T
+^set status_hold 
+^set status_hold_lines $(c2)hold$(hblk)!$(h1)%B $(hblk)˛ˇ
+^set status_query  $(hblk)˛ $(c1)query$(hblk)!$(h1)%Q
+^set status_server $(c1)serv$(hblk)!$(cl)$(h1)%S
+}
+(7) {
+^set status_format1 $(bblu)$(hblu) ‹ ﬂ ˛ $(hwht)%*%=%@$(wht)$(bblu)%N%# %C%+ %! %> $(hblk)[%3$(hblk)] 
+^set status_format2 $(bblu)$(hblu)ﬂ≤ﬂ    %T $(hblk)[$(cyn)%S$(hblk)] %M%A%Q%> %F $(hblk)[%6%L$(hblk)] 
+^set status_chanop $(hwht)@
+^set status_voice $(hwht)+
+^set status_oper $(hwht)*
+^set status_umode  $(hblk)\($(hcyn)+%#$(hblk)\)
+^set status_mode  $(hblk)\($(hcyn)+%+$(hblk)\)
+^set status_channel $(wht)$(bblu)on $(hblk)[%C
+^set status_lag  $(wht)$(bblu)lag$(hcyn)\: $(hwht)%L
+^set status_mail $(wht)$(bblu)mail$(hcyn)\: $(hwht)%M 
+^set status_notify $(wht)$(bblu)act$(hcyn)\: $(hwht)%F
+^set status_users $(wht)$(bblu)o%! n%! i%! v%!$(hblk)\]
+^set status_clock $(wht)$(bblu)time$(hcyn)\: $(hwht)%T
+^set status_hold 
+^set status_hold_lines $(wht)hold$(hcyn)\: $(hwht)%Bˇ
+^set status_format [%R] %> %W 
+^set status_query $(wht)$(bblu)Q$(hcyn)\: $(hwht)%Q
+^set status_server $(hcyn)$(bblu)%S
+}
+}
+^set status_format [%R] %> %W 
+^set status_cdcccount $(c1)gets$(hblk)!$(h1)%| $(c1)offers$(hblk)!$(h1)%|
+^set status_dcccount $(c1)gets$(hblk)!$(h1)%& $(c1)sends$(hblk)!$(h1)%&
+^wset * status_hold $status_hold
+^wset * status_hold_lines $status_hold_lines
+^wset * status_oper $status_oper
+^wset * status_oper_kills $status_oper_kills
+^wset * status_topic $status_topic
+^wset * status_chanop $status_chanop
+^wset * status_voice $status_voice
+^wset * status_oper $status_oper
+^wset * status_umode $status_umode
+^wset * status_mode $status_mode
+^wset * status_channel $status_channel
+^wset * status_lag $status_lag
+^wset * status_mail $status_mail
+^wset * status_notify $status_notify
+^wset * status_users $status_users
+^wset * status_cdcccount $status_cdcccount
+^wset * status_dcccount $status_dcccount
+^wset * status_user $status_user
+^wset * status_clock $status_clock
+^wset * status_query $status_query
+^wset * status_server $status_server
+^wset * status_format $status_format
+^wset * status_format1 $status_format1
+^wset * status_format2 $status_format2
+}
+
+alias fix.st.dcc {
+	switch ($statbar) {
+	(1) {@function_return=[$(c2)dcc$(hblk)!$(h1)$* $(c3)˘$(cl) ]}
+	(2) {@function_return=[$(c2)dcc$(hblk)!$(h1)$* $(c3)˘$(cl) ]}
+	(3) {@function_return=[$(c2)dcc$(hblk)!$(h1)$* $(c3)˘$(cl) ]}
+	(4) {@function_return=[$(c2)dcc$(hblk)\($(h1)$*$(hblk)\)$(cl) ]}
+	(5) {@function_return=[$(c2)dcc$(hblk)/$(h2)$* $(c3)Ï$(cl) ]}
+	(6) {@function_return=[$(c1)dcc$(hblk)!$(c2)$*$(cl) ]}
+}}
+
+alias fix.status {
+	switch ($statbar) {
+(1) {
+^set status_away  $(c3)˘ $(c2)a$(hblk)!$(h1)$get.am()
+^set status_user6  $(c3)˘ $(c2)u$(hblk)!$(h1)$nospace($fix.uptime($uptime()))
+^set status_user3 $get.c() 
+^set status_user5  $(c2)lj$(hblk)!$(h1)$get.l() $(c3)˘ 
+}
+(2) {
+^set status_away  $(c3)˘ $(c2)gone$(hblk)!$(h1)$get.am()
+^set status_user6  $(c3)˘ $(c2)up$(hblk)!$(h1)$nospace($fix.uptime($uptime()))
+^set status_user3 $get.c() 
+^set status_user5  $(c2)lj$(hblk)!$(h1)$get.l() $(c3)˘ 
+}
+(3) {
+^set status_away  $(c3)˘ $(c2)away$(hblk)!$(h1)$get.am()
+^set status_user6  $(c3)˘ $(c2)up$(hblk)!$(h1)$nospace($fix.uptime($uptime())) $(c3)˘ 
+^set status_user3 $get.c() 
+^set status_user5 $(c2)lj$(hblk)!$(h1)$get.l()
+}
+(4) {
+^set status_away  $(c2)gone$(hblk)\($(h1)$get.am()$(hblk)\)
+^set status_user6  $(c2)uptime$(hblk)\($(h1)$nospace($fix.uptime($uptime()))$(hblk)\)
+^set status_user3 $get.c() 
+^set status_user5 $(c2)lj$(hblk)\($(h1)$get.l()$(hblk)\)
+}
+(5) {
+^set status_away  $(c3)Ï $(c2)gone$(hblk)/$(h2)$get.am()
+^set status_user6  $(c3)Ï $(c2)uptime$(hblk)/$(h2)$nospace($fix.uptime($uptime()))
+^set status_user3 $get.c()
+^set status_user5  $(c2)lj$(hblk)/$(h2)$get.l()
+}
+(6) {
+^set status_away  $(hblk)˛ $(c1)gone$(hblk)!$(h1)$get.am()
+^set status_user6  $(hblk)˛ $(c1)uptime$(hblk)!$(h1)$nospace($fix.uptime($uptime()))
+^set status_user3 $get.c()
+^set status_user5  $(c1)lj$(hblk)!$(h1)$get.l()
+}
+(7) {
+^set status_away $(hblk)[$(wht)$(bblu)A$(hcyn)\: $(hwht)$get.am()$(hblk)]
+^set status_user6 $(wht)$(bblu)up$(hcyn)\: $(hwht)$nospace($fix.uptime($uptime()))
+^set status_user3 $(wht)$(bblu)lj$(hcyn)\: $(hwht)$get.l()
+^set status_user5 
+}
+}
+^wset * status_away $status_away
+^wset * status_user5 $status_user5
+^wset * status_user3 $status_user3
+^wset * status_user6 $status_user6
+^wset oper_view status_format1 %S %> blah
+^set input_prompt %K!$c2($T)%K! %n
+}
+
+alias fix.topbar {
+	switch ($topbar) {
+	(1) {^set status_format3 $(cl)$(hblk)[$(h2)t$(hblk)!%C$(hblk)]$(cl)%- %>}
+	(2) {^set status_format3 $(cl)$(hblk)[$(c2)dcc$(hblk)]$(cl) %& %> %| $(hblk)[$(c2)cdcc$(hblk)]$(cl) }
+	(3) {^set status_format3 $(cl)$(hblk)[%C%+$(hblk)] %!  %> $(cl)$tolower($J) $(hwht)-$(cl) $prevail()}
+	(4) {^set status_topic $(cl)$(bblu) %-;^set status_format3 $(cl)$(bblu)$(hblk)[$(hcyn)t$(hblk)!%C$(hblk)]%- %>$(cl);^wset * status_topic $status_topic}
+}
+^wset * status_format3 $status_format3
+}
+
+/* verbose fixes */
+alias fix.v {@function_return=verbose?[$h2($1) $(hblk)\($c2($2)$(hblk)\)$(cl) $0 channel $(c2)$3$(cl)]:[$(hblk)\[$c2($0)$(hblk)!$h2($3)$(hblk)\]$(hwht) $1 $(hblk)\($c2($2)$(hblk)\)$(cl) $(c1)@$(h1)$Z$(cl)]}
+alias fix.v1 {@function_return=verbose?[$(cyn)$2 $(cl)$0 $1 off $3 by $(cyn)$4 $(hblk)\($(cl)$5-$(hblk)\)$(cl)]:[$(hblk)\[$c2(kick)$(hblk)!$h2($3)$(hblk)\]$(hwht) $2 $(cl)by $4 $(hblk)\($(cl)$5-$(hblk)\)$(cl) $(c1)@$(h1)$Z$(cl)]}
+alias fix.v2 {@function_return=verbose?[$h3($1) $(hblk)\($c3($2)$(hblk)\) $c3(requested) $h3($fix.c($4-)) $c3(from $fix.cn($3))$chk.c($4)]:[$(hblk)[$c1($0)$(hblk)!$h1($fix.c($4-))$(hblk)]$(cl) $h2($1) $(hblk)\)$(cl) $(c1)@$(h1)$Z$(cl)$chk.c($4)]}
+alias fix.v3 {@function_return=verbose?[$(hblk)[$(cl)$1$(hblk)]$(cl) $0 $2-]:[$(hblk)[$c3($0)$(hblk)!$h3($1)$(hblk)]$(cl) $2-]}
+alias fix.v4 {@function_return=verbose?[$c2($0) now known as $h2($1)]:[$(hblk)[$c3(nickchange)$(hblk)]$(cyn) $0 $(hblk)>$(hwht) $1$(cl)]}
+alias fix.v5 {@function_return=verbose?[$0 reply from $1$(hblk)\:$(cl) $2-]:[$(hblk)[$c1($0) reply$(hblk)!$h1($1)$(hblk)]$(cl) $2-]}
+
+alias theme ansi
+alias module ansi
+alias ansi ${[$0]?{
+	^local filename ~/pv/ansi/$0.pv
+	^local nff_ $open($filename R)
+	${nff_!=-1?{
+		^local _nff $read($nff_)
+		@mod.name=[$0]
+		^local mod.author $word(1 $_nff)
+		xecho -b Loading ansi bits $(hwht)$(mod.name)$(cl) by $(mod.author)$(hblk)...$(cl)
+		@close($nff_)
+		load.mod $mod.name
+	}:[]}
+}:{
+	@_cnt=0
+	@_fl=[]
+	echo $(hblk)∞∞∞∞∞∞∞∞ $(mag)p $(hblk)∞∞∞∞∞ $(mag)r $(hblk)∞∞ ∞  $(mag)e $(hblk)∞ ∞∞  $(mag)v       $(mag)a   $(hblk)∞   $(mag)i       l$(cl)
+	echo $(hblk)÷ $(cl)name $(hblk)ƒƒƒƒƒƒƒƒƒƒ $(cl)author $(hblk)ƒƒƒƒƒƒƒƒƒ $(cl)description $(hblk)ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ∑$(cl)
+	^on ^exec "flist *" {@push(_fl $1-)}
+	^on ^exec_exit "flist *" {
+		^on ^exec -"flist *"
+		^on ^exec_exit -"flist *"
+		fe ($_fl) flst {
+			^local _avv $open($flst R)
+			@_cnt++
+			^local _va[$_cnt] $read($_avv)
+			^local _fts $rindex(/ $flst)
+			^local _fs $mid(${_fts+1} $strlen($flst) $flst)
+			^local _fss $before(. $_fs)
+			echo $(hblk)∫ $(hwht)$[15]_fss $(cyn)$[15]word(1 $_va[$_cnt]) $(hblk)[$(cl)$[38]restw(2 $_va[$_cnt])$(hblk)] $(hblk)∫$(cl)
+			@close($_avv)
+		}
+	echo $(hblk)”$repeat(74 ƒ)Ω$(cl)
+	xecho -b syntax$(hblk)\:$(cl) /ansi <name>
+	}
+	^exec -name flist ls ~/pv/ansi\/*.pv
+	^assign -cnt
+	^timer 2 ^assign -_fl
+}}
+
+alias load.mod ${[$0]?{
+	@tzm.head=[~/pv/ansi/$(mod.name).h]
+	@tzm.foot=[~/pv/ansi/$(mod.name).f]
+	^local plm.mid ~/pv/ansi/$(mod.name).m
+	foreach tzm heh {
+	^local tmm $(mod.name).$tolower($heh)
+	@delarray($tmm)
+	^local ant $open($tzm[$tolower($heh)] R T)
+	while (!eof($ant)) {
+		^local ansiline
+		@ansiline=strip( $read($ant))
+		${ansiline!=[]?{@setitem($tmm $numitems($tmm) $ansiline)}:[]}
+	}
+	@close($ant)}
+	^local mant $open($plm.mid R T)
+	@mmid=read($mant)
+	@close($mant)
+	^assign -tzm.head
+	^assign -tzm.foot
+}:[]}
+
+alias fix.col1 {
+	switch ($0) {
+	(1) {@c1=blu;@h1=hblu}
+	(2) {@c1=grn;@h1=hgrn}
+	(3) {@c1=cyn;@h1=hcyn}
+	(4) {@c1=red;@h1=hred}
+	(5) {@c1=mag;@h1=hmag}
+	(6) {@c1=yel;@h1=hyel}
+	(7) {@c1=wht;@h1=hwht}
+}}
+alias fix.col2 {
+	switch ($0) {
+	(1) {@c2=blu;@h2=hblu}
+	(2) {@c2=grn;@h2=hgrn}
+	(3) {@c2=cyn;@h2=hcyn}
+	(4) {@c2=red;@h2=hred}
+	(5) {@c2=mag;@h2=hmag}
+	(6) {@c2=yel;@h2=hyel}
+	(7) {@c2=wht;@h2=hwht}
+}}
+alias fix.col3 {
+	switch ($0) {
+	(1) {@c3=blu;@h3=hblu}
+	(2) {@c3=grn;@h3=hgrn}
+	(3) {@c3=cyn;@h3=hcyn}
+	(4) {@c3=red;@h3=hred}
+	(5) {@c3=mag;@h3=hmag}
+	(6) {@c3=yel;@h3=hyel}
+	(7) {@c3=wht;@h3=hwht}
+}}
+
+alias rcolor {
+	^local _rc $rand(8) $rand(8) $rand(8)
+	@_rc=sar(g/0/1/$_rc)
+	color $_rc
+}
+alias crazy rainbow
+alias colour color
+alias colors color
+alias color ${[$2]?{
+@fix.col1($0)
+@fix.col2($1)
+@fix.col3($2)
+@color=[$0 $1 $2]
+^init.status
+}:{
+xecho -b $(hblk)!$(hblu)1$(hblk)! $(blu)blue $(hblk)!$(hgrn)2$(hblk)! $(grn)green $(hblk)!$(hcyn)3$(hblk)! $(cyn)cyan $(hblk)!$(hred)4$(hblk)! $(red)red $(hblk)!$(hmag)5$(hblk)! $(mag)magenta $(hblk)!$(hyel)6$(hblk)! $(yel)yellow $(hblk)!$(hwht)7$(hblk)! $(wht)white$(cl)
+xecho -b syntax$(hblk)\:$(cl) /color <color#> <color#> <color#>
+do {xecho -b Current colors$(hblk)\: $(h1)c$(c1)olor1 $(h2)c$(c2)olor2 $(h3)c$(c3)olor3$(cl)}
+}}
+^color 1 3 5
+alias c1  {@function_return=[$(c1)$*$(cl)]}
+alias h1  {@function_return=[$(h1)$*$(cl)]}
+alias c2  {@function_return=[$(c2)$*$(cl)]}
+alias h2  {@function_return=[$(h2)$*$(cl)]}
+alias c3  {@function_return=[$(c3)$*$(cl)]}
+alias h3  {@function_return=[$(h3)$*$(cl)]}
+alias fp  {@function_return=word(1 $color)==7?[$(hblk)$*$(cl)]:[$(c2)$*$(cl)]}
+alias fsp {@function_return=word(0 $color)==7?[$(hblk)$*$(cl)]:[$(c1)$*$(cl)]}
+alias fix.color {@function_return=c1($word(0 $color))##c2($word(1 $color))##c3($word(2 $color))}
+
+/* config */
+alias cfg config
+alias setup config
+
+alias do.fkey {
+	^bind ~ nothing
+	$fkey[$0]
+	^timer 1 ^bind ~ self_insert
+	^fix.status
+}
+
+alias ttbar ${!tbar?{
+ 	^window split on
+ 	@tbar=1
+ 	echo $(hblk)[$(hcyn)tbar$(hblk)]$(cl) is now $(hwht)on$(cl).
+}:{
+ 	^window split off
+ 	@tbar=0
+ 	echo $(hblk)[$(hcyn)tbar$(hblk)]$(cl) is now $(hwht)off$(cl).
+}}
+
+alias scan {
+	^local chan ${[$0]?[$0]:C}
+	${match($chan $mychannels())?{
+		^local nickz $channel($chan)
+		^local nicks,nicks.
+		@nicks.ops=pattern(*@* $nickz)
+		@nicks.voc=pattern(*+* $nickz)
+		@nicks.non=pattern(*.* $nickz)
+		@push(nicks $nicks.ops $nicks.voc $nicks.non)
+		@nicks=strip(* $nicks)
+		xecho -b $fix.v3(users $chan $(hblk)\($(hwht)$numonchannel($chan)$(cl) total $(hblk)- $c3(o)$(hblk)!$h3($#nicks.ops)$(hblk), $c3(v)$(hblk)!$h3($#nicks.voc)$(hblk), $c3(n)$(hblk)!$h3(${#nicks.non+#nicks.voc})$(hblk)\)$(cl))
+		@get.head()
+		fe ($nicks) n1 n2 n3 n4 n5 n6 {
+			echo $get.mid()  $fix.sc($[10]n1) $fix.sc($[10]n2) $fix.sc($[10]n3) $fix.sc($[10]n4) $fix.sc($[10]n5) $fix.sc($[10]n6)  $get.mid()
+		}
+		@get.foot()
+	}:{xecho -b You are not in that channel.}}
+}
+alias fix.sc {@function_return=msar(g/@/$(h1)@$(c1)/+/$(c3)+$(c1)/./ $(c1)/$*)}
+
+alias ntheme nickcomp
+alias do.ncomp if ([$0]) {
+	switch ($ncomp) {
+		(1) {@function_return=[$0,$1-]}
+		(2) {@function_return=[$0,$1-]}
+		(3) {@function_return=[$0,$1-]}
+		(4) {@function_return=[$0:$1-]}
+		(5) {@function_return=[$0:$1-]}
+		(6) {@function_return=[$0:$1-]}
+		(7) {@function_return=[$0:$1-]}
+		(8) {@function_return=[$0,$1-]}
+		(9) {@function_return=[$0:$1-]}
+		(10) {@function_return=[$0:$1-]}
+		(11) {@function_return=[$0:$1-]}
+		(12) {@function_return=[$0,$1-]}
+		(13) {@function_return=[$0,$1-]}
+		(14) {@function_return=[$0,$1-]}
+		(15) {@function_return=[[$0]:$1-]}
+		(16) {@function_return=[$0:$1-]}
+		(17) {@function_return=[$annoy($0):$1-]}
+		(18) {@function_return=[[$0]:$1-]}
+		(19) {@function_return=[$hfunky($0):$1-]}
+		(20) {@function_return=[$0:$1-]}
+		(21) {@function_return=[[$0]:$1-]}
+}}
+
+alias echostr echochar
+alias etheme echochar
+alias fix.echo {
+	switch ($echar) {
+		(1) {@function_return=[$(blu)-$(cyn)ƒ$(hcyn)ƒ$(cl)]}
+		(2) {@function_return=[$(blu)=$(cyn)=$(hcyn)=$(cl)]}
+		(3) {@function_return=[$(hblk)Õ$(cl)Õ$(hwht)Õ$(cl)]}
+		(4) {@function_return=[$(hblk)ë$(cl)ë$(hwht)ë]}
+		(5) {@function_return=[$(hblk)$(cl)$(hwht)$(cl)]}
+		(6) {@function_return=[$(hblk)©$(cl)©$(hwht)©$(cl)]}
+		(7) {@function_return=[$(hblk)˘$(hwht)p$(hblk)˘$(cl)]}
+		(8) {@function_return=[$(hblk)˛$(c2)˛$(h2)˛$(cl)]}
+		(9) {@function_return=[$(hblk)˛$(c1)˛$(h1)˛$(cl)]}
+		(10) {@function_return=[$(hblk)Ï$(c1)Ï$(h1)Ï$(cl)]}
+		(11) {@function_return=[$(hblk)Ï$(c2)Ï$(h2)Ï$(cl)]}
+		(12) {@function_return=[$(hblk)Ï$(c3)Ï$(h3)Ï$(cl)]}
+		(13) {@function_return=[$(hblk)\($(h2)®$(hblk)\)$(cl)]}
+		(14) {@function_return=[$(mag)øL$(hcyn)¯$(cl)]}
+		(15) {@function_return=[$(hwht)¯$(cl)˘$(hblk)˙$(cl)]}
+		(16) {@function_return=[$(h3)¯$(h1)˘$(hblk)˙$(cl)]}
+		(17) {@function_return=[$(hwht)¯$(h2)˘$(c2)˙$(cl)]}
+		(18) {@function_return=[$(hwht)¯$(h3)˘$(c3)˙$(cl)]}
+		(19) {@function_return=[$(hblk)˙$(c1)˙$(h1)˙$(cl)]}
+		(20) {@function_return=[$(hblk)˙$(cl)˙$(hwht)˙$(cl)]}
+		(21) {@function_return=[$(hblk)[$(hwht)$(h3)p$(hblk)]]}
+		(22) {@function_return=[$(hblk)$(c1)$(h1)$(cl)]}
+		(23) {@function_return=[$(hblk)$(c2)$(h2)$(cl)]}
+		(24) {@function_return=[$(hblk)$(c3)$(h3)$(cl)]}
+}}
+
+alias sbar statbar
+alias status statbar
+alias stheme statbar
+alias tbar topbar
+alias btheme topbar
+
+/* array handlers */
+alias fix.array ${[$0]?{
+^local tt_ $0
+@delarray($tt_)
+@setitem($tt_ \:\: prevail $tt_ reasons - do not edit)
+}:[]}
+
+do ${fexist($quitfile)!=-1?{
+	@fix.array(quit)
+	^local quitlog $open($quitfile R T)
+	while (!eof($quitlog)) {
+		^local qline $read($quitlog)
+		${[$[1]qline]!=[ ]?{@setitem(quit $numitems(quit) $qline)}:[]}
+	}
+	@close($quitlog)
+}:{@fix.array(quit)}}
+do ${fexist($awayfile)!=-1?{
+	@fix.array(away)
+	^local awaylog $open($awayfile R T)
+	while (!eof($awaylog)) {
+		^local aline $read($awaylog)
+		${[$[1]aline]!=[ ]?{@setitem(away $numitems(away) $aline)}:[]}
+	}
+	@close($awaylog)
+}:{@fix.array(away)}}
+do ${fexist($kickfile)!=-1?{
+	@fix.array(kick)
+	^local kicklog $open($kickfile R T)
+	while (!eof($kicklog)) {
+		^local kline $read($kicklog)
+		${[$[1]kline]!=[ ]?{@setitem(kick $numitems(kick) $kline)}:[]}
+	}
+	@close($kicklog)
+}:{@fix.array(kick)}}
+do ${fexist($nickfile)!=-1?{
+	@fix.array(nick)
+	^local nicklog $open($nickfile R T)
+	while (!eof($nicklog)) {
+		^local nline $read($nicklog)
+		${[$[1]nline]!=[ ]?{@setitem(nick $numitems(nick) $nline)}:[]}
+	}
+	@close($nicklog)
+}:{@fix.array(nick)}}
+
+/* alias */
+alias sc {scan $*}
+alias cs {scan $*}
+alias names {scan $*}
+alias n notice
+alias cdban mub
+alias cparse ${[$0]?{send $cparse("$*")}:{xecho -b syntax$(hblk)\:$(cl) /cparse <text>}}
+alias page {ctcp ${[$0]?[$0]:T} page $1-}
+alias autoget tog dcc_autoget
+alias nhp tog hacking
+alias friend ${[$0]?{adduser $* $C master}:{phelp friend}}
+alias nokey unkey
+alias not untopic
+alias cloak tog cloak
+alias frm ^exec frm
+alias ov operview
+alias operview tog operview;^fix.status
+alias si #
+alias disco #
+alias q query
+alias key ${[$0]?{unkey;c +k $*}:{
+	xecho -b Channel key$(hblk)\:$(hcyn) $C $(hblk)-$(cl) $key()
+	do {xecho -b syntax$(hblk)\:$(cl) /key <new channel key>}
+}}
+alias iwwhl {@function_return=[$left(1 $0)$right(${strlen($0)-1} $0)]}
+alias funky {^local fstr $*;^local flend ${strlen($fstr)-2};@function_return=[$(hblk)$left(1 $fstr)$(c2)$mid(1 $flend $fstr)$(hblk)$right(1 $fstr)$(cl)]}
+alias hfunky {^local fstr $*;^local flend ${strlen($fstr)-2};@function_return=[$left(1 $fstr)$mid(1 $flend $fstr)$right(1 $fstr)]}
+alias stdiff {@function_return=right(1 $tdiff2($*))==[ ]?[$right(${strlen($*) - 1}) $tdiff2($*)]:tdiff2($*)}
+alias nospace {@function_return=tr(/ //$*)}
+alias fix.mirc {@function_return=mcolor?mircansi($*):stripmirc($*)}
+alias fix.cn {@function_return=[$0]==N?[you]:[$0]}
+alias fix.c {@function_return=[$0]==[CDCC]||[$0]==[XDCC]||[$0]==[DCC]?tolower($*):tolower($0)}
+alias fix.perc {@function_return=[$0]?[$before(. $0)\%]:[]}
+alias fix.ping {@function_return=isdigit($0)?[$trunc(1 $0) seconds]:[$*]}
+alias chk.c {@function_return=[$0]!=[CDCC]&&[$0]!=[XDCC]&&[$0]!=[DCC]&&[$0]!=[PING]&&cloak?[ $(hblk)\($(cl)cloaked$(hblk)\)$(cl)]:[]}
+alias chk.p {@function_return=paging?[]:[$(hblk)\($(hwht)s$(cl)ilent$(hblk)\)$(cl)]}
+alias get.l ${[$:]?[@function_return=\:]:[@function_return=[noone]}
+alias get.c {@function_return=cloak?[$(hblk)\($(h1)cloak$(hblk)\)]:[ ]}
+alias get.ip {@function_return=left(1 $1)==[\[]&&isnum($mid(1 1 $1))?[$*]:[$0]}
+alias get.q {@function_return=Q?Q:[]}
+alias get.thw {@function_return=mod.name?[ \($iwwhl($mod.name)\)]:[]}
+alias get.am {@function_return=amsgs?amsgs:0}
+alias get.away {@function_return=awaytime==[\?\?]?[\?\?]:nospace($tdiff2(${time() - awaytime}))}
+alias get.email {@function_return=email?[email\: $(email), ]:[]}
+alias get.diff {@function_return=[$0]?tdiff(${time()-[$0]}):[]}
+alias get.diff2 {@function_return=[$0]?tdiff2(${time()-[$0]}):[]}
+alias get.kl {@function_return=klogo?[[pv!$0] $1-]:[$1-]}
+alias fix.p {@function_return=[$*]}
+alias fix.pvd {
+	^local _p $after([ $before(] $stripall($prevail())))
+	@function_return=[$left(2 $_p)˘$right(2 $_p)˘98]}
+alias stripall {@function_return=stripmirc($stripansicodes($strip( $*)))}
+alias fix.al {
+	@function_return=[$* $repeat(${55-realstrlen($*)}  )]
+}
+alias realstrlen {
+	@function_return=strlen($stripall($*))
+}
+alias fix.uptime {
+	^local str1
+	^local str2
+	^local str3
+	${[$0]!=[0d]?[@str1=[$0 ]]:[]}
+	${[$1]!=[0h]?[@str2=[$1 ]]:[]}
+	@str3=[$2]
+	^local str $str1 $str2 $str3
+	${right(1 $str)==[ ]?{@str=left(${strlen($str)-2} $str)}}
+	@function_return=str
+}
+alias fix.d ${isnum($strip(. $after(@ $0)))?[@function_return=[$before(@ $0)@$mid(0 $rindex(. $after(@ $0)) $after(@ $0)).*]]:[${isnum($pass(1234567890 $before(. $after(@ $0))))?[${isnum($pass(1234567890 $before(. $after(. $after(@ $0)))))?[@function_return=[$before(@ $0)@*.$after(. $after(. $after(@ $0)))]]:[@function_return=[$before(@ $0)@*.$after(. $after(@ $0))]]}]:[@function_return=[$0]]}]}
+alias fix.eta {
+	^local fixt
+	^local fixmin $0
+	^local fixsec $1
+	${fixmin>0?[@fixt=[$(fixmin)m]:[@fixt==[0m]]}
+	${fixsec>0?[@fixt#=[$(fixsec)s]]:[@fixt#=[0s]]}
+	@function_return=fixt
+}
+alias fix.meter {@function_return=[$0]<10?[$(hblk)±∞∞∞∞∞∞∞∞∞$(cl)]:[$0]<20?[$(hblk)±≤∞∞∞∞∞∞∞∞$(cl)]:[$0]<30?[$(hblk)±≤€$(hblk)∞∞∞∞∞∞∞$(cl)]:[$0]<40?[$(hblk)±≤€$(c3)≤$(hblk)∞∞∞∞∞∞$(cl)]:[$0]<50?[$(hblk)±≤€$(c3)≤±$(hblk)∞∞∞∞∞$(cl)]:[$0]<60?[$(hblk)±≤€$(c3)≤±∞$(hblk)∞∞∞∞$(cl)]:[$0]<70?[$(hblk)±≤€$(c3)≤±∞∞$(hblk)∞∞∞$(cl)]:[$0]<80?[$(hblk)±≤€$(c3)≤±∞∞$(h3)∞$(hblk)∞∞$(cl)]:[$0]<90?[$(hblk)±≤€$(c3)≤±∞∞$(h3)∞±$(hblk)∞$(cl)]:[$(hblk)±≤€$(c3)≤±∞∞$(h3)∞±∞$(cl)]}
+alias fix.size {
+	^local _s $0
+	^stack push set floating_point_math_var
+	^set floating_point_math_var on
+	@function_return=_s<0?[0b]:_s<1024?[$(_s)b]:_s<1048576?[$trunc(1 ${_s/1024})kb]:_s>=1048576?[$trunc(1 ${_s/1048576})mb]
+	^stack pop set floating_point_math_var
+}
+alias fix.kbs {
+	^local fh $0
+	^local k.a $before(. $fh)
+	${index(. $fh)!=-1?{@function_return=[$(k.a).$left(2 $after(. $fh))kbs]}:{@function_return=[$0kbs]}}
+}
+alias fix.wrap {
+	^local tmp $3
+	fe ($4-) newtxt {${realstrlen($tmp$newtxt)<55?[@push(tmp $newtxt)]:[do {echo $get.mid()$repeat($0  )$1 $2 $fix.al($tmp)$get.mid();@tmp=newtxt}]}}
+	echo $get.mid()$repeat($0  )$1 $2 $fix.al($tmp)$get.mid()
+}
+alias dcc.echo {echo $get.mid() $(hwht)$[2]0 $(c2)$[6]1 $(h2)$[10]2 $(h1)$[3]fix.perc($3) $fix.meter($3) $(c1)$[-8]4 $(c3)$[-6]6 $(hwht)$[-15]5 $get.mid()}
+alias reop {fe ($chops()) o1 o2 o3 o4 {op $o1 $o2 $o3 $o4}}
+do ${!fnexist(randread)?[^alias randread {${fexist($0)!=-1?[do {
+	^local fd $open($0 R)
+	while (!eof($fd)) {^local quitrsn $read($fd);@setitem(tmp $numitems(tmp) $quitrsn)}
+	@close($fd)
+	@function_return=getitem(tmp $rrand($numitems(tmp)))
+	@delarray(tmp)}]:[]}}
+]:[]}
+alias randquit {@function_return=numitems(quit)>=2?getitem(quit $rrand($numitems(quit))):fexist(~/.BitchX/BitchX.quit)?randread(~/.BitchX/BitchX.quit):prevail()}
+alias rrand {
+	^local boo $rand($0)
+	until (boo>0) {@boo=rand($0)}
+	@function_return=boo
+}
+alias get.rand if ([$0]) {
+	switch ($0) {
+	(quit) {@function_return=rquit?randquit():prevail()}
+	(away) {@function_return=numitems(away)>=2?getitem(away $rrand($numitems(away))):prevail()}
+	(kick) {@function_return=numitems(kick)>=2?getitem(kick $rrand($numitems(kick))):prevail()}
+	(nick) {@function_return=numitems(nick)>=2?getitem(nick $rrand($numitems(nick))):[$N_]}
+}}
+alias chk.gop if ([$0]) {
+	^local curwin $winnum()
+	^local dd $0
+	${channel($dd)==[.$(N) ]?{
+		xecho -w $chanwin($dd) -b Auto gain-ops active in $(hwht)$dd$(hblk)..$(cl)
+		^window swap $chanwin($dd);wait for cycle $dd;^window swap $curwin}:[]}
+}{
+	^local curwin $winnum()
+	fe ($mychannels()) dd {
+		${channel($dd)==[.$(N) ]?{
+			xecho -w $chanwin($dd) -b Auto gain-ops active in $(hwht)$dd$(hblk)..$(cl)
+			^window swap $chanwin($dd);wait for cycle $dd;^window swap $curwin}:[]}
+	}
+}
+alias readurl url
+alias remurl {@unlink(~/.BitchX/BitchX.url);xecho -b URL log removed.}
+alias delmemo remmemo
+alias remmemo {@unlink($memofile);xecho -b All memos removed.}
+alias rk ${P?{
+	^local nops $nochops()
+	${nops?[quote kick $C $word($rand($#nops) $nops) \:$get.kl(rk random schmack!)]:[xecho -b No non-ops found.]}
+}:[xecho -b You are not opped.]}
+alias k ${[$0]?{^quote kick $C $0 \:$get.kl(k ${[$1]?[$1-]:get.rand(kick)})
+}:[xecho -b syntax$(hblk)\:$(cl) /k <nick> [reason]]}
+alias kb bk
+alias bk ${[$0]?[
+	${[$1]?{//bk $0 $get.kl(bk $1-)}:{//bk $0 $get.kl(bk $get.rand(kick))}}
+]:[xecho -b syntax$(hblk)\:$(cl) /bk <nick> [reason]]}
+alias quit {do //quit ${[$0]?[$*]:get.rand(quit)}}
+alias gone away
+alias away ${!A?[do {
+	@a.rsn=[$0]?[$*]:get.rand(away)
+	${pubaway?[do {mme is away, $a.rsn $if.lp()}]:[]}
+	${logaway?{@logging=1;xecho -b Logging messages$(hblk)\: $c2($alogfile)}:[@logging=0]}
+	//away $a.rsn 
+	@awaytime=time()}
+]:[xecho -b You are already away.]}
+alias back if (A) {
+	^local awaydiff
+	^local backmsg ${[$0]?[$*]:[hi]}
+	^local backtime $time()
+	if (logging) {@logging=0;input_char "display away messages? [y|N]\: " if ([$0]==[y]) {play}}
+	${isdigit($awaytime)?[@awaydiff=stdiff(${backtime - awaytime})]:[@awaydiff=[?]]}
+ 	${pubaway?[mme is back, $(backmsg) \[gone!$nospace($awaydiff)\]]:[xecho -b You are no longer set-away.]}
+	//back
+	^assign -a.rsn
+	^assign -amsgs
+}{xecho -b You are not away.}
+alias play ${fexist($alogfile)!=-1?{
+	more $alogfile
+	^timer 2 xecho -b Type /remlog to delete message log.
+}:{
+	xecho -b Message log not found.
+}}
+alias readlog play
+alias dellog remlog
+alias remlog {
+	@unlink($alogfile)
+	xecho -b Message log removed.
+	^assign -amsgs
+}
+alias cig ignore $C public
+alias mass ${[$0]?{
+	^local _r
+	@_r=[$1]?[$1-]:get.rand(kick)
+	switch ($0) {
+	(o) {^mop}
+	(r) {^reop}
+	(d) {^mdop}
+	(v) {^mvoice}
+	(q) {^mdvoice}
+	(b) {^mb}
+	(bk) {^mb;^mk *!*@* $get.kl(bk $_r)}
+	(u) {^mub}
+	(lk) {^lk $get.kl(lk $_r)}
+	(k) {
+		^stack push set kick_ops
+		^set kick_ops on
+		^mk *!*@* $get.kl(mk $_r)
+		^stack pop set kick_ops
+	}
+}}:[phelp mass]}
+alias if.lp {@function_return=logaway&&paging?[\[lp\]]:logaway&&!paging?[\[l\]]:!logaway&&paging?[\[p\]]:[]}
+alias vif.lp {@function_return=logaway&&paging?[logging/on paging/on]:logaway&&!paging?[logging/on paging/off]:!logaway&&paging?[logging/off paging/on]:[logging/off paging/off]}
+alias q.away {//away $(a.rsn) - gone!$get.away() $if.lp()}
+alias save {//save;xecho -b Type /psave to save $prevail() settings.}
+/* module handler */
+
+alias get.head ${mod.name?[do {
+	^local hp
+	for (@hp=0, hp < numitems($mod.name\.head), @hp++) {
+	xecho ${[$0]?[-w $0 ]:[]}$getitem($mod.name\.head $hp)}
+}]:[xecho ${[$0]?[-w $0 ]:[]} $(hblk)+------- $(hwht)no theme is set$(hblk) ----------------------------$(hwht) type /ansi$(hblk) -------+$(cl)]}
+alias get.foot ${mod.name?[do {
+	^local hpl
+	for (@hpl=0, hpl < numitems($mod.name\.foot), @hpl++) {
+	xecho ${[$0]?[-w $0 ]:[]}$getitem($mod.name\.foot $hpl)}
+}]:[xecho ${[$0]?[-w $0 ]:[]} $(hblk)+$repeat(71 -)+$(cl)]}
+/* middle is not definable yet. im working on it.. */
+alias get.mid {@function_return=mmid?strip( $mmid):[ $(hblk)|$(cl) ]}
+
+/* does anyone use these xdcc shortcuts but me? */
+alias dcc.doget ${dtype==[CHAT]?{dcc chat $dwho;^wait -cmd {^assign -dtype;^assign -dwho}}:dtype==[SEND]?[dcc get $twho]:[]}
+alias dcc.ig ${dtype==[CHAT]?{dcc close chat $dwho;ig $dwho;^wait -cmd {^assign -dtype;^assign -dwho}}:dtype==[SEND]?{dcc close get $twho;ig $twho}:[]}
+alias dcc.noget ${dtype==[CHAT]?{dcc close chat $dwho;^wait -cmd {^assign -dtype;^assign -dwho}}:dtype==[SEND]?{dcc close get $twho}:[]}
+alias mme {
+	fe ($mychannels()) mychan {
+		${mychan==C?{me $*}:{^describe $mychan $*}}
+	}
+}
+
+/* window shit */
+alias wc {^window new double on hide;reset}
+alias msgwin {wc;window swap last level msgs,notices name Messages}
+alias wl {clear;reset;xecho -b Window $(hwht)$winnum()$(cl) reset.}
+alias wj ${[$0]?{wc;^window swap last ${tbar?[split on ]:[]}channel $*}:{xecho -b syntax$(hblk)\:$(cl) /wj <#channel>}}
+alias wq ${[$0]?{wc;window swap last query $*}:{xecho -b syntax$(hblk)\:$(cl) /wq <nick>}}
+alias wlk {${C?[part $C]:[]};wk}
+alias wkl wlk
+alias lwk wlk
+alias wk window kill
+alias ws window list
+alias wh winhelp
+alias wn window next
+alias wp window previous
+alias 1 window swap 1
+alias 2 window swap 2
+alias 3 window swap 3
+alias 4 window swap 4
+alias 5 window swap 5
+alias 6 window swap 6
+alias 7 window swap 7
+alias 8 window swap 8
+alias 9 window swap 9
+bind meta5-o toggle_ov
+bind meta5-p parse_command wp
+bind meta5-q parse_command wp
+bind meta5-c parse_command wc
+bind meta5-h parse_command winhelp
+bind meta5-k parse_command wk
+bind meta5-l parse_command clear;reset;xecho -b window $(hwht)$winnum()$(cl) reset.
+bind meta5-n parse_command wn
+bind meta5-e parse_command wn
+bind meta5-w parse_command ws
+bind meta5-s parse_command ws
+bind meta5-? parse_command winhelp
+bind meta5-1 parse_command 1
+bind meta5-2 parse_command 2
+bind meta5-3 parse_command 3
+bind meta5-4 parse_command 4
+bind meta5-5 parse_command 5
+bind meta5-6 parse_command 6
+bind meta5-7 parse_command 7
+bind meta5-8 parse_command 8
+bind meta5-9 parse_command 9
+bind meta1-1 parse_command 1
+bind meta1-2 parse_command 2
+bind meta1-3 parse_command 3
+bind meta1-4 parse_command 4
+bind meta1-5 parse_command 5
+bind meta1-6 parse_command 6
+bind meta1-7 parse_command 7
+bind meta1-8 parse_command 8
+bind meta1-9 parse_command 9
+alias help {
+xecho -b $prevail() $(hblk)-$(cl) type /phelp for help.
+//help $*
+}
+
+alias binds winhelp
+
+/* encryption - alias do.crypt by psykotyk */
+@crypt[in]  = [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!.?,\:'/\;\[\]\(\)=]
+@crypt[out] = [ÇÜàäãåéêëí≥ñôöõü¢•®©≠∞±≤≥¥∫ªΩæ¡√≈«» ÀÕ–—“’◊ÿ⁄‹ﬁﬂ·‚‰ÂÁÎÌÔÚÛˆ˜¯˘˙,!.\;'\:/\(\)\[\]=]
+
+alias do.crypt {@function_return=[$0]==[in]?tr(ˇ$crypt[in]ˇ$crypt[out]ˇ$remw(^Z $1-)):tr(ˇ$crypt[out]ˇ$crypt[in]ˇ$remw( $1-))}
+
+^on ^public "% % ˘p˘[30m *" {
+	@mystr=[$3-]
+	@newstr=do.crypt(out $mystr)
+	echo $(hblk)<$(cl)$0$(hblk)>$(cl) $newstr $(hblk)\($c2(encoded)$(hblk)\)$(cl)
+}
+^on ^public_other "% % ˘p˘[30m *" {
+	@mystr=[$3-]
+	@newstr=do.crypt(out $mystr)
+	echo $(hblk)<$(cl)$1$(hblk)!$(cl)$0$(hblk)>$(cl) $newstr $(hblk)\($c2(encoded)$(hblk)\)$(cl)
+}
+^on ^msg "% ˘p˘[30m *" {
+	@mystr=[$2-]
+	@newstr=do.crypt(out $mystr)
+	echo $(hblk)\($c2(encoded)$(hblk)\)[$h3($0)$(hblk)!$c3($userhost())$(hblk)]$(cl) $newstr
+}
+/* help */
+
+@readhelp=open($helpfile R)
+while (!eof($readhelp)) {
+	^local helpline $read($readhelp)
+	${[$[1]helpline]==[@]?{
+		@helparrayname=[phelp$after(1 @ $helpline)]
+		@delarray($helparrayname)
+	}:{
+		${word(0 $helpline)!=[-]&&helpline!=[]?{
+			@setitem($helparrayname $numitems($helparrayname) syntax\: $helpline)
+		}:{
+     		@setitem($helparrayname $numitems($helparrayname) $restw(1 $helpline))
+		}}
+	}}
+}
+@close($readhelp)
+^assign -readhelp
+^assign -helparrayname
+alias ? phelp
+alias pvhelp phelp
+
+/* hooks */
+on ^window "? % OK, you're not /away anymore. Did you have fun? " #
+on ^window "? % OK, you're /away now. Hurry back! " #
+on ^window "? *Type /chat to answer or /nochat to close*" #
+on ^window "? % Currently online: " #
+on ^window "? BitchX: *" xecho -b $2-
+on ^window_swap * {^set input_prompt %K!$c2($T)%K! %n}
+on ^channel_switch * {^set input_prompt %K!$c2($T)%K! %n}
+on ^llook_split * {
+  	xecho -b $(hblk)[$h3(netsplit)$(hblk)] \($h1($1)$(hblk)/$c1($0)$(hblk)\)$(cl)
+  	xecho -b Type $(hwht)^F$(cl) to see who left or $(hwht)^E$(cl) to ride it.}
+on ^llook_join * {xecho -b $(hblk)[$c3(netjoin)$(hblk)] \($h1($0)$(hblk)/$c1($1)$(hblk)\)$(cl)}
+on ^353 * {xecho -b $fix.v3(synching $2 channel$(hblk),$(cl) wait)}
+on ^353 * {@nicks#=[$3-]}
+on ^329 * {xecho -b $fix.v3(origin $1 $(hblk)-$(cl) $get.diff2($2) ago)}
+on ^433 * if (nick.cnt!=numitems(nick)-1) {
+	^local un $0
+	userhost $un -cmd if ([$4]!=[<UNKNOWN>]) {@nick.cnt++}
+	if (numitems(nick)>=2) {xecho -b Trying another..;//nick $get.rand(nick)}{//nick $(un)_}
+	^timer 4 //mode $$N $$usermode
+}{xecho -b You must have a popular nick.. halting.;^assign -nick.cnt}
+on ^raw_irc "% 366 *" {
+	^local nicks.
+	@nicks=sort($nicks)
+	@nicks.ops=pattern(*@* $nicks)
+	@nicks.voc=pattern(*+* $nicks)
+	@nicks.non=sar(g/ / ./$filter(*+* $filter(*@* $nicks)))
+	${#nicks.non?[@nicks.non#~[.]]:[]}
+	@push(nickz $nicks.ops $nicks.voc $nicks.non)
+	xecho -w $chanwin($3) -b $(hblk)[$(cl)$3$(hblk)]$(cl) users $(hblk)\($(hwht)$#nickz$(cl) total $(hblk)-$(cl) $c3(o)$(hblk)!$h3($#nicks.ops)$(hblk), $c3(v)$(hblk)!$h3($#nicks.voc)$(hblk), $c3(n)$(hblk)!$h3(${#nicks.non+#nicks.voc})$(hblk)\)$(cl)
+	@get.head($chanwin($3))
+	fe ($nickz) n1 n2 n3 n4 n5 n6 {
+		xecho -w $chanwin($3) $get.mid()  $fix.sc($[10]n1) $fix.sc($[10]n2) $fix.sc($[10]n3) $fix.sc($[10]n4) $fix.sc($[10]n5) $fix.sc($[10]n6)  $get.mid()
+	}
+	@get.foot($chanwin($3))
+	^assign -nicks
+	^assign -nickz
+}
+on ^306 * #
+on ^305 * #
+on ^482 * #
+on ^441 * #
+on ^481 * {xecho -b You do not have operator status.}
+on ^331 * {xecho -b $(hblk)[$c3($1)$(hblk)]$(cl) $2-}
+on ^402 * {xecho -b $(hblk)[$c3($1)$(hblk)]$(cl) $2-}
+on ^406 * {xecho -b $(hblk)[$c3($1)$(hblk)]$(cl) $2-}
+on ^channel_sync * {
+	xecho -b $fix.v3(synched $0 $1 seconds)
+	${chan_modes&&!M&&ischanop($N $0)?{mode $0 $(chan_modes)}:[]}
+}
+
+on ^hook "log % *" {
+	@blah=open($alogfile W T)
+ 	@write($blah $(hblk)[$(cyn)$Z$(hblk)\($(cl)$toupper($[-6]1)$(hblk)\)]$(cl) $stripmirc($2-))
+ 	@close($blah)
+	@amsgs++
+}
+on ^ctcp "% % page *" {
+	xecho -b $fix.v2(ctcp $0 $userhost() you page) $chk.p()
+	${paging?{
+		${[$3]?[do {xecho -b Page reason$(hblk)\:$(cl) $stripansicodes($3-)}]:[]}
+  	${logging?{
+	   	^hook log ctcp $(mag)CTCP PAGE from $(hmag)$0!$(mag)$userhost()$(cl)
+		${[$3]?[^hook log ctcp $(mag)Page reason$(hblk)\:$(cl) $stripmirc($stripansicodes($3-))]:[]}
+	}:[]}
+	^stack push set beep
+	^set beep on
+	//beep;^timer 1 //beep;^timer 2 //beep;^timer 3 ^stack pop set beep
+}:[]}}
+/* log hooks */
+on #-kick 35 * ${[$0]==N?[${logging?{^hook log kick $(blu)You were kicked from $2 by $(hblu)$1 $(hblk)\($(cl)$3-$(hblk)\)$(cl)}:[]}]:[]}
+on #-msg 35 * ${logging?{^hook log msg $(hblk)[$(hmag)$0$(hblk)!$(mag)$userhost()$(hblk)]$(cl) $1-}:[]}
+on #-notice 35 * ${logging?{^hook log notice $(hblk)-$(hblu)$0$(hblk)!$(blu)$userhost()$(hblk)-$(cl) $1-}:[]}
+on #-invite 35 * ${logging?{^hook log invite $(cyn)Invited to $1 by $(hcyn)$0$(hblk)!$(cyn)$userhost()$(cl)}:[]}
+on #-dcc_request 35 * ${logging?{^hook log dcc $(cyn)DCC $toupper($1) from $(hcyn)$0$(hblk)!$(cyn)$userhost()$(cl)}:[]}
+on #-ctcp 35 * ${logging?{^hook log ctcp $(mag)CTCP $toupper($fix.c($2-)) from $(hmag)$0$(hblk)!$(mag)$userhost()$(cl)}:[]}
+on #-ar_public 35 * ${logging?{^hook log public $(hblk)<$(cl)$1$(hblk)!$(hcyn)$0$(hblk)>$(cl) $2-}:[]}
+on #-ar_public_other 35 * ${logging?{^hook log public $(hblk)<$(cl)$1$(hblk)!$(hcyn)$0$(hblk)>$(cl) $2-}:[]}
+on #-dcc_request 11 * {@dtype=[$1];${[$1]==[CHAT]?{@dwho=[$0];xecho -b Type $(hblk)[$(hwht)^T$(hblk)]$(cl) accept chat $(hblk)[$(hwht)^R$(hblk)]$(cl) refuse $(hblk)[$(hwht)^N$(hblk)]$(cl) ignore user}:[$1]==[SEND]?{@twho=[$0];${dcc_autoget==[OFF]?{xecho -b Type $(hblk)[$(hwht)^T$(hblk)]$(cl) accept file $(hblk)[$(hwht)^R$(hblk)]$(cl) refuse $(hblk)[$(hwht)^N$(hblk)]$(cl) ignore user}:[]}}:[]}}
+on #-timer 21 * ${a.rsn?[q.away]:[]}
+on #-timer 66 * ${ikick?{^showidle}:[]}
+on #-timer 40 * {^fix.status}
+on #-leave 69 * {${gainop&&[$0]!=N?[chk.gop $1]:[]}}
+on #-signoff 69 * {${gainop&&[$0]!=N?[chk.gop]:[]}}
+on #-join 40 * {^fix.status}
+on #-msg 40 * ${logging?{^fix.status}:[]}
+on #-notice 40 * ${logging?{^fix.status}:[]}
+on #-invite 40 * ${logging?{^fix.status}:[]}
+on #-kick 40 * ${logging?{^fix.status}:[]}
+on #-dcc_request 40 * ${logging?{^fix.status}:[]}
+on #-ctcp 40 * ${logging?{^fix.status}:[]}
+on ^idle * ${[$0]&&[$0]==idlemin&&!A?{
+	away idle $idlemin minutes
+	xecho -b You have been setaway after $(hwht)$idlemin$(cl) idle minutes.
+	${pubaway?[do {xecho $AA \$N\ is away, idle $(idlemin) minutes $if.lp()}]:[]}
+}:[]}
+
+on ^dcc_header * {@get.head()}
+on ^dcc_post * {@get.foot()}
+on ^dcc_stat * {
+	@dccnum=[$0]
+	@dcctype=tolower($1)
+	@dccnick=[$2]
+	@dccks=[n/a]
+	@dperc=0
+	@dccf=[$5]
+	dcc.echo $dccnum $dcctype $dccnick $dperc $dccks $dccf n/a
+}
+on ^dcc_statf * {
+	@dccnum=[$0]
+	@dcctype=tolower($1)
+	@dccnick=[$2]
+	@dccks=fix.kbs($4)
+	@dccf=[$5]
+}
+on ^dcc_statf1 * {
+	^local dccsize $fix.size($2)
+	^local dcceta $fix.eta($3 $4)
+	^local dperc $0
+	dcc.echo $dccnum $dcctype $dccnick $dperc $dccks $dccf $dcceta
+	^assign -dccnum
+	^assign -dcctype
+	^assign -dccnick
+	^assign -dccks
+	^assign -dccf
+}
+on -connect * ${a.rsn?{q.away}:[]};^fix.status
+
+/* cdcc plist */
+
+alias plist cdcc plist
+alias fix.cdcc {
+	${[$0]==[PRIVMSG]?{
+	${[$1]==C?{say $2-}:{msg $1 $2-}}
+	}:{
+	notice $1 $2-}}
+}
+on ^cdcc_prepack * {
+fix.cdcc $0 $1    .:[prevail!cdcc - $[-2]3 pack\(s\) offered in $fix.size($12)]:.
+}
+on ^cdcc_pack * {
+fix.cdcc $0 $1 ›#$[2]2ﬁ[$[9]fix.size($4)-$[-3]5 gets] $6-
+}
+on ^cdcc_note * {
+fix.cdcc $0 $1                       ` $2-
+}
+on ^cdcc_postpack * {
+fix.cdcc $0 $1    ˘:[snagged!$fix.size($9) - record!$fix.size($8)/sec]:˘
+}
+
+on ^channel_stats * {
+@get.head()
+echo $get.mid() $[98]center(98 $fix.p(channel $(hwht)$0$(cl) was created$(hblk):$(cyn) $2 $3 $4 $5)) $get.mid()
+echo $get.mid() $[85]center(85 $fix.p(time on channel$(hblk): $(cyn)$6 $7 $8 $9)) $get.mid()
+echo $get.mid() $[211]center(211 $fix.p($(c2)memory usage$(hblk): $(h2)$10 $(c2)bytes $(hblk)\($(c2)nicks$(hblk):$(h2) $11b$(hblk), $(c2)chan$(hblk): $(h2)$12b $(c2)bans$(hblk): $(h2)$13b$(hblk)\))) $get.mid()
+echo $get.mid()  $c3(ops)        $(hblk):$(h3) $[3]14 $c3(deops)     $(hblk):$(h3) $[3]15 $c3(bans)      $(hblk):$(h3) $[3]16 $c3(unbans)     $(hblk):$(h3) $[3]17  $get.mid()
+echo $get.mid()  $c3(topics)     $(hblk):$(h3) $[3]18 $c3(kicks)     $(hblk):$(h3) $[3]19 $c3(publics)   $(hblk):$(h3) $[3]20 $c3(parts)      $(hblk):$(h3) $[3]21  $get.mid()
+echo $get.mid()  $c3(signoffs)   $(hblk):$(h3) $[3]22 $c3(joins)     $(hblk):$(h3) $[3]23 $c3(total bans)$(hblk):$(h3) $[3]24 $c3(maxbans)    $(hblk):$(h3) $[3]25  $get.mid()
+echo $get.mid()  $c3(servops)    $(hblk):$(h3) $[3]26 $c3(serv deops)$(hblk):$(h3) $[3]27 $c3(serv bans) $(hblk):$(h3) $[3]28 $c3(serv unbans)$(hblk):$(h3) $[3]29  $get.mid()
+echo $get.mid()  $c3(users here) $(hblk):$(h3) $[3]30 $c3(users away)$(hblk):$(h3) $[3]31 $c3(opped)     $(hblk):$(h3) $[3]32 $c3(unopped)    $(hblk):$(h3) $[3]33  $get.mid()
+echo $get.mid()  $c3(total nicks)$(hblk):$(h3) $[3]34 $c3(maxnicks)  $(hblk):$(h3) $[3]35 $c3(ircops)    $(hblk):$(h3) $[21]36 $get.mid()
+@get.foot()
+}
+on ^dcc_transfer_stat * {
+@get.head()
+echo $get.mid()  $(hblk)[$(c3)inbound$(hblk)]  [$(c3)outbound$(hblk)]  [$(c3)total files$(hblk)]  [$(c3)active dccs$(hblk)]  [$(c3)slot limit$(hblk)]  $get.mid()
+echo $get.mid() $[-11]fix.size($0) $[-13]fix.size($3) $(hwht)$[-14]6 $[-14]7 $[-13]8   $get.mid()
+echo $get.mid()    $(hblk)[$(c3)inbound stats$(hblk)]     [$(c3)outbound stats$(hblk)]             [$(c3)toggle stats$(hblk)]  $get.mid()
+echo $get.mid()  $(c2)max$(hblk):$(cl) $(h2)$[-6]1kb$(hblk)/$(cl)sec    $(c2)max$(hblk):$(cl) $(h2)$[-6]4kb$(hblk)/$(cl)sec     $(c2)autoget$(hblk):$(cl) $(h2)$[3]tolower($9) $(c2)paths$(hblk):$(cl) $(h2)$[3]tolower($10) $get.mid()
+echo $get.mid()  $(c2)min$(hblk):$(cl) $(h2)$[-6]2kb$(hblk)/$(cl)sec    $(c2)min$(hblk):$(cl) $(h2)$[-6]5kb$(hblk)/$(cl)sec   $(c2)overwrite$(hblk):$(cl) $(h2)$[3]tolower($12) $(c2)quiet$(hblk):$(cl) $(h2)$[3]tolower($11) $get.mid()
+@get.foot()
+}
+
+/* fun kicks */
+on #-public 13 * {${rkick&&ischanop($N $1)?{
+	${[$2-]==rep&&[$0]==repwho&&!ischanop($0 $1)?{
+ 		@repeat=rept-time()
+		${repeat<=7?{
+	 		//kick $1 $0 $get.kl(rk repeat!=good)
+	}:[]}}:{
+	@rep=[$2-]
+	@rept=time()
+	@repwho=[$0]
+}}}:[]}}
+on #-public_other 13 * {${rkick&&ischanop($N $1)?{
+	${[$2-]==orep&&[$0]==orepwho&&!ischanop($0 $1)?{
+ 		@orepeat=orept-time()
+		${orepeat<=7?{
+	 		//kick $1 $0 $get.kl(rk repeat!=good)
+	}:[]}}:{
+	@orep=[$2-]
+	@orept=time()
+	@orepwho=[$0]
+}}}:[]}}
+on -public "% % **" {
+	${mkick&&ischanop($N $1)?{
+		${!ischanop($0 $1)?{
+			//kick $1 $0 $get.kl(mk mirc!=good)
+}:[]}}:[]}}
+on -public_other "% % **" {
+	${mkick&&ischanop($N $1)?{
+		//kick $1 $0 $get.kl(mk mirc!=good)
+}:[]}}
+on #^showidle_header 66 * {${ikick?{@_ic=[$0]}:[]}}
+on #^showidle 66 * {${ikick&&ischanop($N $_ic)?{
+	@_im=[$3]
+	${[$2]==0&&_im>=ikick*60&&!ischanop($0 $_ic)?{
+		//kick $_ic $0 $get.kl(ik idle!=good \(${_im / 60} mins\))
+}:[]}}:[]}}
+do ^load $savefile
+@dict.ec=[$(hblk)>$(c2)>$(h2)>$(cl)]
+do ^assign G $fix.echo()
+do ^set show_numerics_str $G
+^init.status
+do ${tbar==1?[^window split on]:[]}
+^window double on
+do ${fexist($savefile)==-1?{
+xecho -b This appears to be your first time running $prevail().
+xecho -b Type /config to configure, /ansi to load a theme.}:[]}
+do ${fexist($helpfile)==-1?{
+xecho -b Help file $(hblk)[$(cyn)$helpfile$(hblk)]$(cl) was not found.  Be sure that you uncompressed the tar file in your home directory, thus creating a ~/pv directory.}:{
+xecho -b $prevail() successfully loaded. $(hblk)\($(hwht)/phelp $(cl)for help$(hblk)\)$(cl)}}
+/* eof */

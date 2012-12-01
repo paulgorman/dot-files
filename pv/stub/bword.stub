@@ -1,0 +1,6 @@
+alias bword ${[$0]?{
+	${[$[1]0]==[-]?{
+	${[$0]==[-l]?{showwordkick}:{unbanword * $strip(- $0)}}
+	}:{banword * $*}}
+	restub bword
+}:{phelp bword;restub bword}}

@@ -1,0 +1,12 @@
+alias url ${fexist(~/.BitchX/BitchX.url)!=-1?{
+	@hh=0
+	//exec -name bxurl cat ~/.BitchX/BitchX.url
+	echo $(hblk)!$(cl)###$(hblk)! $(hwht)nickname $(hblk)\($(hwht)url address$(hblk)\)$(cl)
+	^on ^exec "bxurl" {
+	@hh++
+	echo $(hblk)[$(cyn)$[-3]hh$(hblk)! $(cl)$[9]stripansicodes($1)$(hblk)] $(cl)$stripansicodes($4-)$(cl)
+	}
+	^on ^exec_exit "bxurl" {
+	xecho -b total urls listed$(hblk)\: $h1($hh) $(hblk)-$(cl) Type /remurl to delete.
+	^on ^exec_exit -"bxurl";^on ^exec -"bxurl";restub url}
+}:{xecho -b URL log $(hblk)\($(cyn)~/.BitchX/BitchX.url$(hblk)\)$(cl) not found.;restub url}}

@@ -1,0 +1,6 @@
+alias wns ${[$0]?{
+	@_p=[$1]?[$1]:[6667]
+	@_s=[$0]
+	^window new server $_s\:$_p double on hide;reset
+	restub wns
+}:{xecho -b syntax$(hblk)\:$(cl) /wns <server> [port];restub wns}}

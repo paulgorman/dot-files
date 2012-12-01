@@ -1,0 +1,8 @@
+window double on swap 1 channel #L
+window new double on hide swap 2 channel #iRev
+window new double on hide swap 3 level MSGS,NOTICES
+window new double on hide swap 4 channel #kyogi
+window new double on hide swap 5 channel #lasvegas
+window new double on hide swap 6 channel #tessa
+window new double on hide swap 7 channel #luniac
+window swap 1

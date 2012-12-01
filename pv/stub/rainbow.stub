@@ -1,0 +1,8 @@
+alias rainbow ${rainbow?{
+	^timer -del all;^assign -rainbow
+	xecho -b $(hcyn)Rainbow$(cl) is now $(hwht)off$(cl).
+	@color=color.old;color $color;restub rainbow
+	}:{
+	@color.old=color;^timer -rep -1 2 rcolor;^assign rainbow 1
+	xecho -b $(hcyn)Rainbow$(cl) is now $(hwht)on$(cl).;restub rainbow
+}}

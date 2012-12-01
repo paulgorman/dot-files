@@ -1,0 +1,82 @@
+alias save.quit ${numitems(quit)>=2?{
+	@unlink($quitfile)
+	^local quitpv $open($quitfile W T)
+	^local xz
+	for (@xz=1,xz<numitems(quit),@xz++) {@write($quitpv $getitem(quit $xz))}
+	@close($quitpv)
+	xecho -b BitchX\: $prevail()\: ${numitems(quit)-1} quit reasons saved to $quitfile
+}:[]}
+alias save.away ${numitems(away)>=2?{
+	@unlink($awayfile)
+	^local awaypv $open($awayfile W T)
+	^local xz
+	for (@xz=1,xz<numitems(away),@xz++) {@write($awaypv $getitem(away $xz))}
+	@close($awaypv)
+	xecho -b BitchX\: $prevail()\: ${numitems(away)-1} away reasons saved to $awayfile
+}:[]}
+alias save.kick ${numitems(kick)>=2?{
+	@unlink($kickfile)
+	^local kickpv $open($kickfile W T)
+	^local xz
+	for (@xz=1,xz<numitems(kick),@xz++) {@write($kickpv $getitem(kick $xz))}
+	@close($kickpv)
+	xecho -b BitchX\: $prevail()\: ${numitems(kick)-1} kick reasons saved to $kickfile
+}:[]}
+alias save.nick ${numitems(nick)>=2?{
+	@unlink($nickfile)
+	^local nickpv $open($nickfile W T)
+	^local xz
+	for (@xz=1,xz<numitems(nick),@xz++) {@write($nickpv $getitem(nick $xz))}
+	@close($nickpv)
+	xecho -b BitchX\: $prevail()\: ${numitems(nick)-1} nicks saved to $nickfile
+}:[]}
+alias psave {
+	@rename($savefile $savefile~)
+	save.quit
+	save.away
+	save.kick
+	save.nick
+	@savepv=open($savefile W T)
+	@write($savepv :: prevail-bitchx config file - saved $strftime($time() %D %T))
+	@write($savepv @logaway=[$logaway])
+	@write($savepv @pubaway=[$pubaway])
+	@write($savepv @idlemin=[$idlemin])
+	@write($savepv @paging=[$paging])
+	@write($savepv @mcolor=[$mcolor])
+	@write($savepv @gainop=[$gainop])
+	@write($savepv @email=[$email])
+	@write($savepv @rkick=[$rkick])
+	@write($savepv @ikick=[$ikick])
+	@write($savepv @mkick=[$mkick])
+	@write($savepv @mod.name=[$mod.name])
+	@write($savepv @ncomp=[$ncomp])
+	@write($savepv @statbar=[$statbar])
+	@write($savepv @topbar=[$topbar])
+	@write($savepv @tbar=[$tbar])
+	@write($savepv @klogo=[$klogo])
+	@write($savepv @echar=[$echar])
+	@write($savepv @dict.serv=[$dict.serv])
+	@write($savepv @chan_modes=[$chan_modes])
+	@write($savepv @rquit=[$rquit])
+	@write($savepv @fkey[2]=[$fkey[2]])
+	@write($savepv @fkey[3]=[$fkey[3]])
+	@write($savepv @fkey[4]=[$fkey[4]])
+	@write($savepv @fkey[5]=[$fkey[5]])
+	@write($savepv @fkey[6]=[$fkey[6]])
+	@write($savepv @fkey[7]=[$fkey[7]])
+	@write($savepv @fkey[8]=[$fkey[8]])
+	@write($savepv @fkey[INS]=[$fkey[INS]])
+	@write($savepv @fkey[DEL]=[$fkey[DEL]])
+	@write($savepv ^set auto_rejoin $auto_rejoin)
+	@write($savepv ^set flood_after $flood_after)
+	@write($savepv ^set usermode $usermode)
+	@write($savepv ^set flood_rate $flood_rate)
+	@write($savepv ^set send_ignore_msg $send_ignore_msg)
+	@write($savepv ^set auto_whowas $auto_whowas)
+	@write($savepv ^color $color)
+	@write($savepv if (mod.name) {^ansi $mod.name})
+	@close($savepv)
+	xecho -b BitchX: $prevail(): settings saved to $savefile
+	xecho -b Type /save to save all BitchX settings.
+	restub psave save.quit save.away save.kick save.nick
+}

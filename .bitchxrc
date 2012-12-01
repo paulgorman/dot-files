@@ -1,0 +1,6 @@
+^load ~/pv/pv.bx
+ircname Presence
+^load ~/.BitchX/bxlog.bx
+^set kick_ops off
+^ignore_time 0
+orignick Presence

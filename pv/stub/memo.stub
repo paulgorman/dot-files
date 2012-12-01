@@ -1,0 +1,14 @@
+alias memo ${[$0]?{
+	^local memfl $open($memofile W T)
+	@write($memfl [$strftime($time() %x)] $*)
+	@close($memfl)
+	xecho -b Memo saved to $(cyn)$memofile$(cl).
+	restub memo
+	}:{
+	${fexist($memofile)!=-1?{
+		xecho -b Memos stored in $(cyn)$memofile$(cl)..
+		more $memofile
+		xecho -b Type $(hwht)/remmemo$(cl) to erase all memos.
+	}:{xecho -b Memofile not found.}}
+	restub memo
+}}

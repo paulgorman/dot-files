@@ -1,0 +1,21 @@
+alias tnick ${[$0]?{
+        ${[$[1]0]==[-]?{
+	^local _tt $strip(- $0)
+	@delitem(nick $_tt)
+	xecho -b Removed nick $(hwht)$_tt$(cl).
+	}:{
+	@setitem(nick $numitems(nick) $*)
+	xecho -b Added nick to list. Total\: $(hwht)${numitems(nick)-1}$(cl)
+}}
+restub tnick
+}:{
+	${numitems(nick)==1?{xecho -b You have no nicks stored.}:{
+	xecho -b Nicks$(hblk)\:
+	^local xz
+	for (@xz=1,xz<numitems(nick),@xz++) {
+	xecho -b $(hblk)!$(hwht)$xz$(hblk)!$(cl) $getitem(nick $xz)
+	}
+	xecho -b syntax$(hblk)\:$(cl) /tnick [-#] [nick]
+}}
+restub tnick
+}}

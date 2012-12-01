@@ -1,0 +1,21 @@
+alias tkick ${[$0]?{
+	${[$[1]0]==[-]?{
+	^local _tt $strip(- $0)
+	@delitem(kick $_tt)
+	xecho -b Removed kick reason $(hwht)$_tt$(cl).
+	}:{
+	@setitem(kick $numitems(kick) $*)
+	xecho -b Added kick reason to list. Total\: $(hwht)${numitems(kick)-1}$(cl)
+}}
+restub tkick
+}:{
+	${numitems(kick)==1?{xecho -b You have no kick reasons stored.}:{
+	xecho -b Kick reasons$(hblk)\:
+	^local xz
+	for (@xz=1,xz<numitems(kick),@xz++) {
+	xecho -b $(hblk)!$(hwht)$xz$(hblk)!$(cl) $getitem(kick $xz)
+	}
+	xecho -b syntax$(hblk)\:$(cl) /tkick [-#] [reason]
+}}
+restub tkick
+}}

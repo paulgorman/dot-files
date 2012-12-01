@@ -1,0 +1,25 @@
+alias nickcomp ${[$0]?{
+	^local t.ncomp $0
+	${t.ncomp<1||t.ncomp>ncmax?[xecho -b Invalid choice.]:{
+		@ncomp=t.ncomp
+		xecho -b Nick completion set$(hblk)\: $(hwht)$ncomp$(cl).
+}}
+restub nickcomp
+}:{
+	^local old.ncomp $ncomp
+	^local ii,te
+	for (@ii=1, ii<=ncmax, @ii=ii+3) {
+		for (@te=1, te<=3, @te++) {@e.$te=[]}
+		@ncomp=ii
+		^local e1 $(hblk)\($(hwht)$[-2]ncomp$(hblk)\)$(cl) $do.ncomp($N  hi)
+		^local e2,e3
+		${ii+1<=ncmax?{@ncomp=ii+1
+		@e2=[$(hblk)\($(hwht)$[-2]ncomp$(hblk)\)$(cl) $do.ncomp($N  hi)]}:[]}
+		${ii+2<=ncmax?{@ncomp=ii+2
+		@e3=[$(hblk)\($(hwht)$[-2]ncomp$(hblk)\)$(cl) $do.ncomp($N  hi)]}:[]}
+		xecho -b $e1   $e2   $e3}
+	@ncomp=old.ncomp
+	xecho -b Nick completion is currently $(hwht)$ncomp$(cl).
+	xecho -b syntax$(hblk)\:$(cl) /nickcomp $(hblk)<$(cyn)1-$(ncmax)$(hblk)>$(cl)
+	restub nickcomp
+}}

@@ -1,0 +1,83 @@
+alias fix.tog ${[$1]?{
+	^assign $0 0;xecho -b $(hblk)\[$(hcyn)$0$(hblk)\]$(cl) is now $(hwht)$fix.oo(0)$(cl).}:{
+	^assign $0 1;xecho -b $(hblk)\[$(hcyn)$0$(hblk)\]$(cl) is now $(hwht)$fix.oo(1)$(cl).}}
+alias fix.oo {@function_return=[$0]?[on]:[off]}
+alias fix.ot {@function_return=[$0]?[$0]:[off]}
+alias config ${[$0]?{
+	^local _new ${[$1]||[$1]==0?[$1-]:[]}
+	^local plik $tolower($0)
+	${!pass($[1]plik abcdefghijklmno)?[xecho -b Invalid selection.]:{
+		switch ($plik) {
+		(a) {@fix.tog(verbose $verbose)}
+		(b) {
+			${_new||_new==0?[^assign idlemin $_new]:[]}
+			${idlemin==0?[xecho -b Auto-setaway is $(hwht)off$(cl).]:[xecho -b Auto-setaway after $(hwht)$idlemin$(cl) minutes.]}
+		    }
+		(c) {@fix.tog(logaway $logaway)}
+		(d) {@fix.tog(pubaway $pubaway)}
+		(e) {@fix.tog(paging $paging)}
+		(f) {@fix.tog(mcolor $mcolor)}
+		(g) {@fix.tog(gainop $gainop)}
+		(h) {
+			${_new||_new==0?[^assign email $_new]:[]}
+			${email==0?[xecho -b You have no email address set.]:[xecho -b Email address set to$(hblk)\: $(hwht)$email$(cl)]}
+		    }
+		(i) {@fix.tog(klogo $klogo)}
+		(j) {@fix.tog(mkick $mkick)}
+		(k) {@fix.tog(rkick $rkick)}
+		(l) {
+			${_new||_new==0?[^assign ikick $_new]:[]}
+			${ikick==0?[xecho -b Idlekick is $(hwht)off$(cl).]:[xecho -b Idlekick active$(hblk)\: $(hwht)$ikick$(cl) minutes.]}
+		    }
+		(m) {
+			${_new||_new==0?[^assign chan_modes $_new]:[]}
+			${chan_modes==0?[xecho -b Default channel modes is $(hwht)off$(cl).]:[xecho -b Default channel modes active$(hblk)\: $(hwht)$chan_modes$(cl)]}
+		    }
+		(n) {@fix.tog(rquit $rquit)}
+		(o) {
+			${_new?[^assign dict.serv $_new]:dict.serv==[dict.org]?[^assign dict.serv www.miranda.org]:[^assign dict.serv dict.org]}
+			xecho -b Dictionary server set to$(hblk)\: $(hwht)$dict.serv$(cl)
+			}
+		(f2) {${_new?[@fkey[2]=strip(/ $_new)]:[]}
+			xecho -b Function key $(hwht)f2$(cl) bound to$(hblk)\:$(hwht) $fkey[2]$(cl)}
+		(f3) {${_new?[@fkey[3]=strip(/ $_new)]:[]}
+			xecho -b Function key $(hwht)f3$(cl) bound to$(hblk)\:$(hwht) $fkey[3]$(cl)}
+		(f4) {${_new?[@fkey[4]=strip(/ $_new)]:[]}
+			xecho -b Function key $(hwht)f4$(cl) bound to$(hblk)\:$(hwht) $fkey[4]$(cl)}
+		(f5) {${_new?[@fkey[5]=strip(/ $_new)]:[]}
+			xecho -b Function key $(hwht)f5$(cl) bound to$(hblk)\:$(hwht) $fkey[5]$(cl)}
+		(f6) {${_new?[@fkey[6]=strip(/ $_new)]:[]}
+			xecho -b Function key $(hwht)f6$(cl) bound to$(hblk)\:$(hwht) $fkey[6]$(cl)}
+		(f7) {${_new?[@fkey[7]=strip(/ $_new)]:[]}
+			xecho -b Function key $(hwht)f7$(cl) bound to$(hblk)\:$(hwht) $fkey[7]$(cl)}
+		(f8) {${_new?[@fkey[8]=strip(/ $_new)]:[]}
+			xecho -b Function key $(hwht)f8$(cl) bound to$(hblk)\:$(hwht) $fkey[8]$(cl)}
+		(ins) {${_new?[@fkey[INS]=strip(/ $_new)]:[]}
+			xecho -b Insert key bound to$(hblk)\:$(hwht) $fkey[INS]$(cl)}
+		(del) {${_new?[@fkey[DEL]=strip(/ $_new)]:[]}
+			xecho -b Delete key bound to$(hblk)\:$(hwht) $fkey[DEL]$(cl)}
+		}
+}}
+restub config fix.tog fix.oo fix.ot
+}:{
+echo $(hblk)°°°°°°°° $(mag)p $(hblk)°°°°° $(mag)r $(hblk)°° °  $(mag)e $(hblk)° °°  $(mag)v       $(mag)a   $(hblk)°   $(mag)i       l$(cl)
+echo $(hblk)Ö$repeat(53 Ä)Ò$repeat(21 Ä)·$(cl)
+echo $(hblk)º [$(hcyn)a$(hblk)]$(cl) verbose echo mode$(hblk)$repeat(15 ú$(hblk))[$(hwht)$[14]fix.oo($verbose)$(hblk)]º$(cl) current colors$(hblk): $fix.color() $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)b$(hblk)]$(cl) minutes before autoaway $(hblk)\($(cl)0=off$(hblk)\)$(hblk)ú[$(hwht)$[14]fix.ot($idlemin)$(hblk)]º$(cl) version$(hblk):$(cl) $[10]fix.pvd() $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)c$(hblk)]$(cl) log messages while setaway$(hblk)$repeat(6 ú$(hblk))[$(hwht)$[14]fix.oo($logaway)$(hblk)]ÇÄ$(hwht) key bindings $(hblk)ÄÄÄÄÄÄº$(cl)
+echo $(hblk)º [$(hcyn)d$(hblk)]$(cl) publicly set yourself away$(hblk)$repeat(6 ú$(hblk))[$(hwht)$[14]fix.oo($pubaway)$(hblk)]º$(cl) $(hblk)\[$(hcyn)INS$(hblk)\]$(cl) $pad(-13 $fkey[INS]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)e$(hblk)]$(cl) enable ctcp paging/beeping$(hblk)$repeat(6 ú$(hblk))[$(hwht)$[14]fix.oo($paging)$(hblk)]º$(cl) $(hblk)\[$(hcyn)DEL$(hblk)\]$(cl) $pad(-13 $fkey[DEL]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)f$(hblk)]$(cl) display public mirc colors$(hblk)$repeat(6 ú$(hblk))[$(hwht)$[14]fix.oo($mcolor)$(hblk)]º$(cl) $(hblk)\[$(hcyn)f2$(hblk)\]$(cl) $pad(-14 $fkey[2]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)g$(hblk)]$(cl) autocycle channel to gain ops$(hblk)$repeat(3 ú$(hblk))[$(hwht)$[14]fix.oo($gainop)$(hblk)]º$(cl) $(hblk)\[$(hcyn)f3$(hblk)\]$(cl) $pad(-14 $fkey[3]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)h$(hblk)]$(cl) your email address $(hblk)\($(cl)0=none$(hblk)\)$repeat(5 ú$(hblk))[$(hwht)$[14]fix.ot($email)$(hblk)]º$(cl) $(hblk)\[$(hcyn)f4$(hblk)\]$(cl) $pad(-14 $fkey[4]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)i$(hblk)]$(cl) add prevail kick logos$(hblk)$repeat(10 ú$(hblk))[$(hwht)$[14]fix.oo($klogo)$(hblk)]º$(cl) $(hblk)\[$(hcyn)f5$(hblk)\]$(cl) $pad(-14 $fkey[5]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)j$(hblk)]$(cl) public mirc color kicker$(hblk)$repeat(8 ú$(hblk))[$(hwht)$[14]fix.oo($mkick)$(hblk)]º$(cl) $(hblk)\[$(hcyn)f6$(hblk)\]$(cl) $pad(-14 $fkey[6]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)k$(hblk)]$(cl) public repeat kicker$(hblk)$repeat(12 ú$(hblk))[$(hwht)$[14]fix.oo($rkick)$(hblk)]º$(cl) $(hblk)\[$(hcyn)f7$(hblk)\]$(cl) $pad(-14 $fkey[7]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)l$(hblk)]$(cl) idlekick minutes $(hblk)\($(cl)0=off$(hblk)\)$repeat(8 ú$(hblk))[$(hwht)$[14]fix.ot($ikick)$(hblk)]º$(cl) $(hblk)\[$(hcyn)f8$(hblk)\]$(cl) $pad(-14 $fkey[8]) $(hblk)º$(cl)
+echo $(hblk)º [$(hcyn)m$(hblk)]$(cl) default channel modes $(hblk)\($(cl)0=off$(hblk)\)$repeat(3 ú$(hblk))[$(hwht)$[14]fix.ot($chan_modes)$(hblk)]º                     º$(cl)
+echo $(hblk)º [$(hcyn)n$(hblk)]$(cl) random quit reasons$(hblk)$repeat(13 ú$(hblk))[$(hwht)$[14]fix.oo($rquit)$(hblk)]º                     º$(cl)
+echo $(hblk)º [$(hcyn)o$(hblk)]$(cl) your dictionary server$(hblk)$repeat(10 ú$(hblk))[$(hwht)$[14]dict.serv$(hblk)]º                     º$(cl)
+echo $(hblk)Ó$repeat(53 Ä)Ð$repeat(21 Ä)½$(cl)
+xecho -b syntax$(hblk)\:$(cl) $(hwht)/config $(hblk)<$(cyn)#$(hblk)> [$(cyn)new value$(hblk)]$(cl) to change or just $(hwht)/config $(hblk)<$(cyn)#$(hblk)>$(cl) to toggle.
+restub config fix.tog fix.oo fix.ot
+}}

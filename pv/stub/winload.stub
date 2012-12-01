@@ -1,0 +1,1 @@
+alias winload {${fexist(~/pv/pv.win)!=-1?[^load ~/pv/pv.win]:[]}}

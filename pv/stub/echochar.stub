@@ -1,0 +1,32 @@
+alias echochar ${[$0]?{
+	^local t.echar $0
+	${t.echar<1||t.echar>emax?[xecho -b Invalid choice.]:{
+		@echar=t.echar
+		^assign G $fix.echo()
+		^set show_numerics_str $G
+		xecho -b Echo prompt set$(hblk)\: $(hwht)$echar$(cl).
+}}
+restub echochar
+}:{
+        ^local old.echar $echar
+	^local ii,te
+	for (@ii=1, ii<=emax, @ii=ii+6) {
+		for (@te=1, te<=6, @te++) {@e.$te=[]}
+		@echar=ii
+		^local e1 $(hblk)\($(hwht)$[-2]echar$(hblk)\)$(cl) $fix.echo()
+		^local e2,e3,e4,e5,e6
+		${ii+1<=emax?{@echar=ii+1
+		@e2=[$(hblk)\($(hwht)$[-2]echar$(hblk)\)$(cl) $fix.echo()]}:[]}
+		${ii+2<=emax?{@echar=ii+2
+		@e3=[$(hblk)\($(hwht)$[-2]echar$(hblk)\)$(cl) $fix.echo()]}:[]}
+		${ii+3<=emax?{@echar=ii+3
+		@e4=[$(hblk)\($(hwht)$[-2]echar$(hblk)\)$(cl) $fix.echo()]}:[]}
+		${ii+4<=emax?{@echar=ii+4
+		@e5=[$(hblk)\($(hwht)$[-2]echar$(hblk)\)$(cl) $fix.echo()]}:[]}
+		${ii+5<=emax?{@echar=ii+5
+		@e6=[$(hblk)\($(hwht)$[-2]echar$(hblk)\)$(cl) $fix.echo()]}:[]}
+		xecho -b $e1   $(cl)$e2   $(cl)$e3   $(cl)$e4   $(cl)$e5   $(cl)$e6}
+	@echar=old.echar
+	xecho -b syntax$(hblk)\:$(cl) /echochar $(hblk)<$(cyn)1-$(emax)$(hblk)>$(cl)
+	restub echochar
+}}

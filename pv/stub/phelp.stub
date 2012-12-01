@@ -1,0 +1,15 @@
+alias phelp {
+	^local htopic
+	${[$0]?{
+		@htopic=tolower($0)}:{@htopic=[index]}}
+		${numitems(phelp$htopic)?{
+			@get.head()
+			^local ap
+			for (@ap=0, ap < numitems(phelp$htopic), @ap++) {echo $get.mid() $[67]getitem(phelp$htopic $ap) $get.mid()}
+			@get.foot()
+		}:{
+			xecho -b $(hwht)$htopic$(hblk):$(cl) No help is available for this command.
+		}
+	}
+	restub phelp
+}

@@ -1,0 +1,38 @@
+:: prevail-bitchx config file - saved 10/03/00 17:35:40
+@logaway=[0]
+@pubaway=[0]
+@idlemin=[0]
+@paging=[1]
+@mcolor=[1]
+@gainop=[0]
+@email=[presence@irev.net]
+@rkick=[0]
+@ikick=[0]
+@mkick=[0]
+@mod.name=[i_think_i_need_a_bigger_bawx]
+@ncomp=[1]
+@statbar=[7]
+@topbar=[4]
+@tbar=[1]
+@klogo=[0]
+@echar=[1]
+@dict.serv=[dict.org]
+@chan_modes=[]
+@rquit=[]
+@fkey[2]=[user -ops]
+@fkey[3]=[user -nonops]
+@fkey[4]=[sv]
+@fkey[5]=[showidle]
+@fkey[6]=[dcc stats]
+@fkey[7]=[chanst]
+@fkey[8]=[ostat]
+@fkey[INS]=[operview]
+@fkey[DEL]=[cloak]
+^set auto_rejoin 1
+^set flood_after 15
+^set usermode +iw
+^set flood_rate 15
+^set send_ignore_msg OFF
+^set auto_whowas OFF
+^color 3 2 7
+if (mod.name) {^ansi $mod.name}

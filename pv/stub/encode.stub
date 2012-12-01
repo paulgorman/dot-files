@@ -1,0 +1,12 @@
+alias encode {${[$0]?{
+	${[$0]==[-m]?{
+		@_tw=[$1]
+		@_cm=[$2-]
+	}:{
+		@_tw=T
+		@_cm=[$*]
+	}}
+	@var=do.crypt(in $_cm)
+	msg $_tw ùpù[30m $var 
+}:{xecho -b /encode [-m nick] <text>}};restub encode}
+# [0m
