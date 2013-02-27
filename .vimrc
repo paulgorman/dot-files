@@ -18,18 +18,32 @@ set laststatus=2        " enable status bar (more below)
 
 set relativenumber			" vim7.3 thing to show ctrl-N's line number column relative distance from current line
 " Ctrl-N Ctrl-r to toggle relative numbers
-nmap <C-N><C-R> :set norelativenumber<CR>    
+nmap <C-N><C-R> :set norelativenumber!<CR>
 
 " Use 256-colors mode:
 set t_Co=256
 
 " color scheme
 colorscheme getafe
+ hi User1 gui=NONE ctermfg=White ctermbg=DarkGray guifg=#a7dfff guibg=#333333 " File name
+ hi User2 gui=NONE ctermfg=LightRed ctermbg=DarkGray guifg=#ff9999 guibg=#333333 " File Flag
+ hi User3 gui=NONE ctermfg=White ctermbg=DarkGray guifg=#ffffff guibg=#333333 " File type
+ hi User4 gui=NONE ctermfg=Green ctermbg=DarkGray guifg=#90ff90 guibg=#333333 " Fugitive
+ hi User5 gui=NONE ctermfg=LightYellow ctermbg=DarkGray guifg=#ffffa0 guibg=#333333 " RVM
+ hi User6 gui=NONE ctermfg=White ctermbg=DarkRed guifg=#ffffff guibg=#af0000 " Syntax Errors
+ hi User7 gui=NONE ctermfg=White ctermbg=Yellow guifg=#ffff00 guibg=#333333
+ hi User8 gui=NONE ctermfg=Magenta ctermbg=DarkGray guifg=#99a0f9 guibg=#333333 " Position
 
 " insert mode use "jj" to escape back to control mode.
 inoremap jj <ESC>
 
 set backspace=indent,eol,start	" backspace over stuff
+
+" If I do :set list then show | for tabs and $ for eol.  :set nolist to disable
+set listchars=tab:\|\ ,eol:$
+hi SpecialKey ctermfg=232			" dark dark grey for tab
+hi NonText ctermfg=232				" dark dark grey for eol
+set list
 
 au BufNewFile,BufRead *.boo setf boo 
 
@@ -45,13 +59,18 @@ map <F2> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows=0
 
 " Format the statusline
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ 
+set statusline=%1*\ %F%5*%m%r%h\ %w\ \ %1*CWD:\ %r%{CurDir()}%h\ \ \ 
 " %f path
 " %m modified
 " %r readonly flag
 " %w preview window flag
 " File format, encoding and type.  Ex: "(unix/utf-8/python)"
 set statusline+=\ (line\ %l\/%L,\ col\ %03c)
+" Syntastic error space:
+set statusline+=%6*%#warningmsg#
+set statusline+=%6*%{SyntasticStatuslineFlag()}
+set statusline+=%1*
+" and back to business
 set statusline+=%=   " Right align.
 set statusline+=(
 set statusline+=%{&ff}                        " Format (unix/DOS).
@@ -78,3 +97,4 @@ function! CurDir()
     return curdir
 endfunction
 
+call pathogen#infect()
